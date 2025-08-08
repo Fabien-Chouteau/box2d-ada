@@ -1,0 +1,170 @@
+{
+  "defines": [
+    {
+      "name": "B2_NULL_ID",
+      "type": "UNKNOWN",
+      "value": "{}",
+      "description": ""
+    },
+    {
+      "name": "B2_ID_INLINE",
+      "type": "UNKNOWN",
+      "value": "inline",
+      "description": ""
+    },
+    {
+      "name": "B2_IS_NULL( id )",
+      "type": "MACRO",
+      "value": "( (id).index1 == 0 )",
+      "description": ""
+    },
+    {
+      "name": "B2_IS_NON_NULL( id )",
+      "type": "MACRO",
+      "value": "( (id).index1 != 0 )",
+      "description": ""
+    },
+    {
+      "name": "B2_ID_EQUALS( id1, id2 )",
+      "type": "MACRO",
+      "value": "( (id1).index1 == (id2).index1 && (id1).world0 == (id2).world0 && (id1).generation == (id2).generation )",
+      "description": ""
+    }
+  ],
+  "structs": [
+    {
+      "name": "b2WorldId",
+      "description": "/ World id references a world instance. This should be treated as an opaque handle.",
+      "fields": [
+        {
+          "type": "uint16_t",
+          "name": "index1",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "generation",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2BodyId",
+      "description": "/ Body id references a body instance. This should be treated as an opaque handle.",
+      "fields": [
+        {
+          "type": "int32_t",
+          "name": "index1",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "world0",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "generation",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeId",
+      "description": "/ Shape id references a shape instance. This should be treated as an opaque handle.",
+      "fields": [
+        {
+          "type": "int32_t",
+          "name": "index1",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "world0",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "generation",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ChainId",
+      "description": "/ Chain id references a chain instances. This should be treated as an opaque handle.",
+      "fields": [
+        {
+          "type": "int32_t",
+          "name": "index1",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "world0",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "generation",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2JointId",
+      "description": "/ Joint id references a joint instance. This should be treated as an opaque handle.",
+      "fields": [
+        {
+          "type": "int32_t",
+          "name": "index1",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "world0",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "generation",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ContactId",
+      "description": "/ Contact id references a contact instance. This should be treated as an opaque handled.",
+      "fields": [
+        {
+          "type": "int32_t",
+          "name": "index1",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "world0",
+          "description": ""
+        },
+        {
+          "type": "int16_t",
+          "name": "padding",
+          "description": ""
+        },
+        {
+          "type": "uint32_t",
+          "name": "generation",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+  ]
+}

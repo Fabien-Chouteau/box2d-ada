@@ -1,0 +1,4431 @@
+{
+  "defines": [
+  ],
+  "structs": [
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+    {
+      "name": "b2CreateWorld",
+      "description": "",
+      "returnType": "b2WorldId",
+      "params": [
+        {
+          "type": "const b2WorldDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2DestroyWorld",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_IsValid",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "b2World_Step",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "float",
+          "name": "timeStep"
+        },
+        {
+          "type": "int",
+          "name": "subStepCount"
+        }
+      ]
+    },
+    {
+      "name": "b2World_Draw",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2DebugDraw *",
+          "name": "draw"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetBodyEvents",
+      "description": "",
+      "returnType": "b2BodyEvents",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetSensorEvents",
+      "description": "",
+      "returnType": "b2SensorEvents",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetContactEvents",
+      "description": "",
+      "returnType": "b2ContactEvents",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetJointEvents",
+      "description": "",
+      "returnType": "b2JointEvents",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_OverlapAABB",
+      "description": "",
+      "returnType": "b2TreeStats",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2AABB",
+          "name": "aabb"
+        },
+        {
+          "type": "b2QueryFilter",
+          "name": "filter"
+        },
+        {
+          "type": "b2OverlapResultFcn *",
+          "name": "fcn"
+        }
+      ]
+    },
+    {
+      "name": "b2World_OverlapShape",
+      "description": "",
+      "returnType": "b2TreeStats",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2ShapeProxy *",
+          "name": "proxy"
+        },
+        {
+          "type": "b2QueryFilter",
+          "name": "filter"
+        }
+      ]
+    },
+    {
+      "name": "b2World_CastRay",
+      "description": "",
+      "returnType": "b2TreeStats",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "origin"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "translation"
+        },
+        {
+          "type": "b2QueryFilter",
+          "name": "filter"
+        }
+      ]
+    },
+    {
+      "name": "b2World_CastRayClosest",
+      "description": "",
+      "returnType": "b2RayResult",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "origin"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "translation"
+        },
+        {
+          "type": "b2QueryFilter",
+          "name": "filter"
+        }
+      ]
+    },
+    {
+      "name": "b2World_CastShape",
+      "description": "",
+      "returnType": "b2TreeStats",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2ShapeProxy *",
+          "name": "proxy"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "translation"
+        },
+        {
+          "type": "b2QueryFilter",
+          "name": "filter"
+        }
+      ]
+    },
+    {
+      "name": "b2World_CastMover",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "mover"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "translation"
+        },
+        {
+          "type": "b2QueryFilter",
+          "name": "filter"
+        }
+      ]
+    },
+    {
+      "name": "b2World_CollideMover",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "mover"
+        },
+        {
+          "type": "b2QueryFilter",
+          "name": "filter"
+        },
+        {
+          "type": "b2PlaneResultFcn *",
+          "name": "fcn"
+        }
+      ]
+    },
+    {
+      "name": "b2World_EnableSleeping",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2World_IsSleepingEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_EnableContinuous",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2World_IsContinuousEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetRestitutionThreshold",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "float",
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetRestitutionThreshold",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetHitEventThreshold",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "float",
+          "name": "value"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetHitEventThreshold",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetCustomFilterCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2CustomFilterFcn *",
+          "name": "fcn"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetPreSolveCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2PreSolveFcn *",
+          "name": "fcn"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetGravity",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "gravity"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetGravity",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_Explode",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2ExplosionDef *",
+          "name": "explosionDef"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetContactTuning",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        },
+        {
+          "type": "float",
+          "name": "pushSpeed"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetMaximumLinearSpeed",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "float",
+          "name": "maximumLinearSpeed"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetMaximumLinearSpeed",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_EnableWarmStarting",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2World_IsWarmStartingEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetAwakeBodyCount",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetProfile",
+      "description": "",
+      "returnType": "b2Profile",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetCounters",
+      "description": "",
+      "returnType": "b2Counters",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetUserData",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "void *",
+          "name": "userData"
+        }
+      ]
+    },
+    {
+      "name": "b2World_GetUserData",
+      "description": "",
+      "returnType": "void *",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetFrictionCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2FrictionCallback *",
+          "name": "callback"
+        }
+      ]
+    },
+    {
+      "name": "b2World_SetRestitutionCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "b2RestitutionCallback *",
+          "name": "callback"
+        }
+      ]
+    },
+    {
+      "name": "b2World_DumpMemoryStats",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_RebuildStaticTree",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        }
+      ]
+    },
+    {
+      "name": "b2World_EnableSpeculative",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateBody",
+      "description": "",
+      "returnType": "b2BodyId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2BodyDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2DestroyBody",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_IsValid",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetType",
+      "description": "",
+      "returnType": "b2BodyType",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetType",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2BodyType",
+          "name": "type"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetName",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "const char *",
+          "name": "name"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetName",
+      "description": "",
+      "returnType": "const char *",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetUserData",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "void *",
+          "name": "userData"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetUserData",
+      "description": "",
+      "returnType": "void *",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetPosition",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetRotation",
+      "description": "",
+      "returnType": "b2Rot",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetTransform",
+      "description": "",
+      "returnType": "b2Transform",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetTransform",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "position"
+        },
+        {
+          "type": "b2Rot",
+          "name": "rotation"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetLocalPoint",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "worldPoint"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetWorldPoint",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localPoint"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetLocalVector",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "worldVector"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetWorldVector",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localVector"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetLinearVelocity",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetAngularVelocity",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetLinearVelocity",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "linearVelocity"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetAngularVelocity",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "float",
+          "name": "angularVelocity"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetTargetTransform",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Transform",
+          "name": "target"
+        },
+        {
+          "type": "float",
+          "name": "timeStep"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetLocalPointVelocity",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localPoint"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetWorldPointVelocity",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "worldPoint"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ApplyForce",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "force"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        },
+        {
+          "type": "bool",
+          "name": "wake"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ApplyForceToCenter",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "force"
+        },
+        {
+          "type": "bool",
+          "name": "wake"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ApplyTorque",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "float",
+          "name": "torque"
+        },
+        {
+          "type": "bool",
+          "name": "wake"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ApplyLinearImpulse",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "impulse"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        },
+        {
+          "type": "bool",
+          "name": "wake"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ApplyLinearImpulseToCenter",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "impulse"
+        },
+        {
+          "type": "bool",
+          "name": "wake"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ApplyAngularImpulse",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "float",
+          "name": "impulse"
+        },
+        {
+          "type": "bool",
+          "name": "wake"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetMass",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetRotationalInertia",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetLocalCenterOfMass",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetWorldCenterOfMass",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetMassData",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2MassData",
+          "name": "massData"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetMassData",
+      "description": "",
+      "returnType": "b2MassData",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ApplyMassFromShapes",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetLinearDamping",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "float",
+          "name": "linearDamping"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetLinearDamping",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetAngularDamping",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "float",
+          "name": "angularDamping"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetAngularDamping",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetGravityScale",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "float",
+          "name": "gravityScale"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetGravityScale",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_IsAwake",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetAwake",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "bool",
+          "name": "awake"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_EnableSleep",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "bool",
+          "name": "enableSleep"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_IsSleepEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetSleepThreshold",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "float",
+          "name": "sleepThreshold"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetSleepThreshold",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_IsEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_Disable",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_Enable",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetMotionLocks",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2MotionLocks",
+          "name": "locks"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetMotionLocks",
+      "description": "",
+      "returnType": "b2MotionLocks",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_SetBullet",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_IsBullet",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_EnableContactEvents",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_EnableHitEvents",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetWorld",
+      "description": "",
+      "returnType": "b2WorldId",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetShapeCount",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetShapes",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2ShapeId *",
+          "name": "shapeArray"
+        },
+        {
+          "type": "int",
+          "name": "capacity"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetJointCount",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetJoints",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2JointId *",
+          "name": "jointArray"
+        },
+        {
+          "type": "int",
+          "name": "capacity"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetContactCapacity",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_GetContactData",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "b2ContactData *",
+          "name": "contactData"
+        },
+        {
+          "type": "int",
+          "name": "capacity"
+        }
+      ]
+    },
+    {
+      "name": "b2Body_ComputeAABB",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateCircleShape",
+      "description": "",
+      "returnType": "b2ShapeId",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "const b2ShapeDef *",
+          "name": "def"
+        },
+        {
+          "type": "const b2Circle *",
+          "name": "circle"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateSegmentShape",
+      "description": "",
+      "returnType": "b2ShapeId",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "const b2ShapeDef *",
+          "name": "def"
+        },
+        {
+          "type": "const b2Segment *",
+          "name": "segment"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateCapsuleShape",
+      "description": "",
+      "returnType": "b2ShapeId",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "const b2ShapeDef *",
+          "name": "def"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "capsule"
+        }
+      ]
+    },
+    {
+      "name": "b2CreatePolygonShape",
+      "description": "",
+      "returnType": "b2ShapeId",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "const b2ShapeDef *",
+          "name": "def"
+        },
+        {
+          "type": "const b2Polygon *",
+          "name": "polygon"
+        }
+      ]
+    },
+    {
+      "name": "b2DestroyShape",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "bool",
+          "name": "updateBodyMass"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_IsValid",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetType",
+      "description": "",
+      "returnType": "b2ShapeType",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetBody",
+      "description": "",
+      "returnType": "b2BodyId",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetWorld",
+      "description": "",
+      "returnType": "b2WorldId",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_IsSensor",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetUserData",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "void *",
+          "name": "userData"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetUserData",
+      "description": "",
+      "returnType": "void *",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetDensity",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "float",
+          "name": "density"
+        },
+        {
+          "type": "bool",
+          "name": "updateBodyMass"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetDensity",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetFriction",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "float",
+          "name": "friction"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetFriction",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetRestitution",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "float",
+          "name": "restitution"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetRestitution",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetMaterial",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "int",
+          "name": "material"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetMaterial",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetSurfaceMaterial",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "b2SurfaceMaterial",
+          "name": "surfaceMaterial"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetSurfaceMaterial",
+      "description": "",
+      "returnType": "b2SurfaceMaterial",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetFilter",
+      "description": "",
+      "returnType": "b2Filter",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetFilter",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "b2Filter",
+          "name": "filter"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_EnableSensorEvents",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_AreSensorEventsEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_EnableContactEvents",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_AreContactEventsEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_EnablePreSolveEvents",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_ArePreSolveEventsEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_EnableHitEvents",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "bool",
+          "name": "flag"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_AreHitEventsEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_TestPoint",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_RayCast",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "const b2RayCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetCircle",
+      "description": "",
+      "returnType": "b2Circle",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetSegment",
+      "description": "",
+      "returnType": "b2Segment",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetChainSegment",
+      "description": "",
+      "returnType": "b2ChainSegment",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetCapsule",
+      "description": "",
+      "returnType": "b2Capsule",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetPolygon",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetCircle",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "const b2Circle *",
+          "name": "circle"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetCapsule",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "capsule"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetSegment",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "const b2Segment *",
+          "name": "segment"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_SetPolygon",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "const b2Polygon *",
+          "name": "polygon"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetParentChain",
+      "description": "",
+      "returnType": "b2ChainId",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetContactCapacity",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetContactData",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "b2ContactData *",
+          "name": "contactData"
+        },
+        {
+          "type": "int",
+          "name": "capacity"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetSensorCapacity",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetSensorData",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "b2ShapeId *",
+          "name": "visitorIds"
+        },
+        {
+          "type": "int",
+          "name": "capacity"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetAABB",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_ComputeMassData",
+      "description": "",
+      "returnType": "b2MassData",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        }
+      ]
+    },
+    {
+      "name": "b2Shape_GetClosestPoint",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "target"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateChain",
+      "description": "",
+      "returnType": "b2ChainId",
+      "params": [
+        {
+          "type": "b2BodyId",
+          "name": "bodyId"
+        },
+        {
+          "type": "const b2ChainDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2DestroyChain",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_GetWorld",
+      "description": "",
+      "returnType": "b2WorldId",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_GetSegmentCount",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_GetSegments",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        },
+        {
+          "type": "b2ShapeId *",
+          "name": "segmentArray"
+        },
+        {
+          "type": "int",
+          "name": "capacity"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_SetFriction",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        },
+        {
+          "type": "float",
+          "name": "friction"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_GetFriction",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_SetRestitution",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        },
+        {
+          "type": "float",
+          "name": "restitution"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_GetRestitution",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_SetMaterial",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        },
+        {
+          "type": "int",
+          "name": "material"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_GetMaterial",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "chainId"
+        }
+      ]
+    },
+    {
+      "name": "b2Chain_IsValid",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ChainId",
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "b2DestroyJoint",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_IsValid",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetType",
+      "description": "",
+      "returnType": "b2JointType",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetBodyA",
+      "description": "",
+      "returnType": "b2BodyId",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetBodyB",
+      "description": "",
+      "returnType": "b2BodyId",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetWorld",
+      "description": "",
+      "returnType": "b2WorldId",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetLocalFrameA",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "b2Transform",
+          "name": "localFrame"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetLocalFrameA",
+      "description": "",
+      "returnType": "b2Transform",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetLocalFrameB",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "b2Transform",
+          "name": "localFrame"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetLocalFrameB",
+      "description": "",
+      "returnType": "b2Transform",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetCollideConnected",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "shouldCollide"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetCollideConnected",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetUserData",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "void *",
+          "name": "userData"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetUserData",
+      "description": "",
+      "returnType": "void *",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_WakeBodies",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetConstraintForce",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetConstraintTorque",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetLinearSeparation",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetAngularSeparation",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetConstraintTuning",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetConstraintTuning",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float *",
+          "name": "hertz"
+        },
+        {
+          "type": "float *",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetForceThreshold",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "threshold"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetForceThreshold",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetTorqueThreshold",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "threshold"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetTorqueThreshold",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateDistanceJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2DistanceJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_SetLength",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "length"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetLength",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_EnableSpring",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_IsSpringEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_SetSpringForceRange",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "lowerForce"
+        },
+        {
+          "type": "float",
+          "name": "upperForce"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetSpringForceRange",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float *",
+          "name": "lowerForce"
+        },
+        {
+          "type": "float *",
+          "name": "upperForce"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_IsCompressionEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_SetSpringHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_SetSpringDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetSpringHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetSpringDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_EnableLimit",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_IsLimitEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_SetLengthRange",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "minLength"
+        },
+        {
+          "type": "float",
+          "name": "maxLength"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetMinLength",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetMaxLength",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetCurrentLength",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_EnableMotor",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_IsMotorEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_SetMotorSpeed",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetMotorSpeed",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_SetMaxMotorForce",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "force"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetMaxMotorForce",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJoint_GetMotorForce",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateMotorJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2MotorJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetLinearVelocity",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "velocity"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetLinearVelocity",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetAngularVelocity",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "velocity"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetAngularVelocity",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetMaxVelocityForce",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "maxForce"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetMaxVelocityForce",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetMaxVelocityTorque",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "maxTorque"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetMaxVelocityTorque",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetLinearHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetLinearHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetLinearDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "damping"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetLinearDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetAngularHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetAngularHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetAngularDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "damping"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetAngularDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetMaxSpringForce",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "maxForce"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetMaxSpringForce",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_SetMaxSpringTorque",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "maxTorque"
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJoint_GetMaxSpringTorque",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateMouseJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2MouseJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_SetSpringHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_GetSpringHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_SetSpringDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_GetSpringDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_SetMaxForce",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "maxForce"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_GetMaxForce",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateFilterJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2FilterJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2CreatePrismaticJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2PrismaticJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_EnableSpring",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_IsSpringEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_SetSpringHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetSpringHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_SetSpringDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetSpringDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_SetTargetTranslation",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "translation"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetTargetTranslation",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_EnableLimit",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_IsLimitEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetLowerLimit",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetUpperLimit",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_SetLimits",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "lower"
+        },
+        {
+          "type": "float",
+          "name": "upper"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_EnableMotor",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_IsMotorEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_SetMotorSpeed",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetMotorSpeed",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_SetMaxMotorForce",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "force"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetMaxMotorForce",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetMotorForce",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetTranslation",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJoint_GetSpeed",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateRevoluteJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2RevoluteJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_EnableSpring",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_IsSpringEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_SetSpringHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetSpringHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_SetSpringDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetSpringDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_SetTargetAngle",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "angle"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetTargetAngle",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetAngle",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_EnableLimit",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_IsLimitEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetLowerLimit",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetUpperLimit",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_SetLimits",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "lower"
+        },
+        {
+          "type": "float",
+          "name": "upper"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_EnableMotor",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_IsMotorEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_SetMotorSpeed",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetMotorSpeed",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetMotorTorque",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_SetMaxMotorTorque",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "torque"
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJoint_GetMaxMotorTorque",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateWeldJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2WeldJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_SetLinearHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_GetLinearHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_SetLinearDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_GetLinearDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_SetAngularHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_GetAngularHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_SetAngularDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJoint_GetAngularDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2CreateWheelJoint",
+      "description": "",
+      "returnType": "b2JointId",
+      "params": [
+        {
+          "type": "b2WorldId",
+          "name": "worldId"
+        },
+        {
+          "type": "const b2WheelJointDef *",
+          "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_EnableSpring",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_IsSpringEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_SetSpringHertz",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "hertz"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_GetSpringHertz",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_SetSpringDampingRatio",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_GetSpringDampingRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_EnableLimit",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_IsLimitEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_GetLowerLimit",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_GetUpperLimit",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_SetLimits",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "lower"
+        },
+        {
+          "type": "float",
+          "name": "upper"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_EnableMotor",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_IsMotorEnabled",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_SetMotorSpeed",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_GetMotorSpeed",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_SetMaxMotorTorque",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "torque"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_GetMaxMotorTorque",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJoint_GetMotorTorque",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Contact_IsValid",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ContactId",
+          "name": "id"
+        }
+      ]
+    },
+    {
+      "name": "b2Contact_GetData",
+      "description": "",
+      "returnType": "b2ContactData",
+      "params": [
+        {
+          "type": "b2ContactId",
+          "name": "contactId"
+        }
+      ]
+    }
+  ]
+}

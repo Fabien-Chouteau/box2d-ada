@@ -1,0 +1,255 @@
+{
+  "defines": [
+    {
+      "name": "B2_PI",
+      "type": "FLOAT",
+      "value": 3.14159265359,
+      "description": ""
+    }
+  ],
+  "structs": [
+    {
+      "name": "b2Vec2",
+      "description": "/ This can be used to represent a point or free vector",
+      "fields": [
+        {
+          "type": "float",
+          "name": "x",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "y",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2CosSin",
+      "description": "/ This uses a custom implementation designed for cross-platform determinism",
+      "fields": [
+        {
+          "type": "float",
+          "name": "cosine",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "sine",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Rot",
+      "description": "/ This is similar to using a complex number for rotation",
+      "fields": [
+        {
+          "type": "float",
+          "name": "c",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "s",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Transform",
+      "description": "/ A 2D rigid transform",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "p",
+          "description": ""
+        },
+        {
+          "type": "b2Rot",
+          "name": "q",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Mat22",
+      "description": "/ A 2-by-2 Matrix",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "cx",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "cy",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2AABB",
+      "description": "/ Axis-aligned bounding box",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "lowerBound",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "upperBound",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Plane",
+      "description": "/ separation = dot(normal, point) - offset",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "normal",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "offset",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+    {
+      "name": "b2IsValidFloat",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "float",
+          "name": "a"
+        }
+      ]
+    },
+    {
+      "name": "b2IsValidVec2",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "v"
+        }
+      ]
+    },
+    {
+      "name": "b2IsValidRotation",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2Rot",
+          "name": "q"
+        }
+      ]
+    },
+    {
+      "name": "b2IsValidTransform",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2Transform",
+          "name": "t"
+        }
+      ]
+    },
+    {
+      "name": "b2IsValidAABB",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2AABB",
+          "name": "aabb"
+        }
+      ]
+    },
+    {
+      "name": "b2IsValidPlane",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2Plane",
+          "name": "a"
+        }
+      ]
+    },
+    {
+      "name": "b2Atan2",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "float",
+          "name": "y"
+        },
+        {
+          "type": "float",
+          "name": "x"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeCosSin",
+      "description": "",
+      "returnType": "b2CosSin",
+      "params": [
+        {
+          "type": "float",
+          "name": "radians"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeRotationBetweenUnitVectors",
+      "description": "",
+      "returnType": "b2Rot",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "v1"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "v2"
+        }
+      ]
+    },
+    {
+      "name": "b2SetLengthUnitsPerMeter",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "float",
+          "name": "lengthUnits"
+        }
+      ]
+    },
+    {
+      "name": "b2GetLengthUnitsPerMeter",
+      "description": "",
+      "returnType": "float"
+    }
+  ]
+}

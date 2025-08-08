@@ -1,0 +1,14 @@
+name = "box2d_raylib_debug"
+description = "Raylib implementation of Box2D debug render"
+version = "0.1.0-dev"
+
+authors = ["Fabien Chouteau"]
+maintainers = ["Fabien Chouteau <fabien.chouteau@gmail.com>"]
+maintainers-logins = ["Fabien-Chouteau"]
+licenses = "MIT OR Apache-2.0 WITH LLVM-exception"
+website = ""
+tags = ["box2d", "physics", "gamedev"]
+
+[[depends-on]]
+raylib = "^1.0.1"
+box2D = "*"

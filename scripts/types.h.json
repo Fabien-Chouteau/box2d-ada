@@ -1,0 +1,2903 @@
+{
+  "defines": [
+    {
+      "name": "B2_DEFAULT_CATEGORY_BITS",
+      "type": "INT",
+      "value": 1,
+      "description": ""
+    },
+    {
+      "name": "B2_DEFAULT_MASK_BITS",
+      "type": "UNKNOWN",
+      "value": "UINT64_MAX",
+      "description": ""
+    }
+  ],
+  "structs": [
+    {
+      "name": "b2RayResult",
+      "description": "/ @ingroup world",
+      "fields": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "normal",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "fraction",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "nodeVisits",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "leafVisits",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "hit",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2WorldDef",
+      "description": "/ @ingroup world",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "gravity",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "restitutionThreshold",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "hitEventThreshold",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "contactHertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "contactDampingRatio",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "contactSpeed",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maximumLinearSpeed",
+          "description": ""
+        },
+        {
+          "type": "b2FrictionCallback *",
+          "name": "frictionCallback",
+          "description": ""
+        },
+        {
+          "type": "b2RestitutionCallback *",
+          "name": "restitutionCallback",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSleep",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableContinuous",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "workerCount",
+          "description": ""
+        },
+        {
+          "type": "b2EnqueueTaskCallback *",
+          "name": "enqueueTask",
+          "description": ""
+        },
+        {
+          "type": "b2FinishTaskCallback *",
+          "name": "finishTask",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userTaskContext",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2MotionLocks",
+      "description": "/ Motion locks to restrict the body movement",
+      "fields": [
+        {
+          "type": "bool",
+          "name": "linearX",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "linearY",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "angularZ",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2BodyDef",
+      "description": "/ @ingroup body",
+      "fields": [
+        {
+          "type": "b2BodyType",
+          "name": "type",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "position",
+          "description": ""
+        },
+        {
+          "type": "b2Rot",
+          "name": "rotation",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "linearVelocity",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "angularVelocity",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "linearDamping",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "angularDamping",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "gravityScale",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "sleepThreshold",
+          "description": ""
+        },
+        {
+          "type": "const char *",
+          "name": "name",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
+          "type": "b2MotionLocks",
+          "name": "motionLocks",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSleep",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "isAwake",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "isBullet",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "isEnabled",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "allowFastRotation",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Filter",
+      "description": "/ @ingroup shape",
+      "fields": [
+        {
+          "type": "uint64_t",
+          "name": "categoryBits",
+          "description": ""
+        },
+        {
+          "type": "uint64_t",
+          "name": "maskBits",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "groupIndex",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2QueryFilter",
+      "description": "/ @ingroup shape",
+      "fields": [
+        {
+          "type": "uint64_t",
+          "name": "categoryBits",
+          "description": ""
+        },
+        {
+          "type": "uint64_t",
+          "name": "maskBits",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2SurfaceMaterial",
+      "description": "/ @ingroup shape",
+      "fields": [
+        {
+          "type": "float",
+          "name": "friction",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "restitution",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "rollingResistance",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "tangentSpeed",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "userMaterialId",
+          "description": ""
+        },
+        {
+          "type": "uint32_t",
+          "name": "customColor",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeDef",
+      "description": "/ @ingroup shape",
+      "fields": [
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
+          "type": "b2SurfaceMaterial",
+          "name": "material",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "density",
+          "description": ""
+        },
+        {
+          "type": "b2Filter",
+          "name": "filter",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableCustomFiltering",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "isSensor",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSensorEvents",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableContactEvents",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableHitEvents",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enablePreSolveEvents",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "invokeContactCreation",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "updateBodyMass",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ChainDef",
+      "description": "/ @ingroup shape",
+      "fields": [
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
+          "type": "const b2Vec2 *",
+          "name": "points",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "count",
+          "description": ""
+        },
+        {
+          "type": "const b2SurfaceMaterial *",
+          "name": "materials",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "materialCount",
+          "description": ""
+        },
+        {
+          "type": "b2Filter",
+          "name": "filter",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "isLoop",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSensorEvents",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Profile",
+      "description": "/ Profiling data. Times are in milliseconds.",
+      "fields": [
+        {
+          "type": "float",
+          "name": "step",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "pairs",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "collide",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "solve",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "prepareStages",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "solveConstraints",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "prepareConstraints",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "integrateVelocities",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "warmStart",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "solveImpulses",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "integratePositions",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "relaxImpulses",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "applyRestitution",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "storeImpulses",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "splitIslands",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "transforms",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "sensorHits",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "jointEvents",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "hitEvents",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "refit",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "bullets",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "sleepIslands",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "sensors",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Counters",
+      "description": "/ Counters that give details of the simulation size.",
+      "fields": [
+        {
+          "type": "int",
+          "name": "bodyCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "shapeCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "contactCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "jointCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "islandCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "stackUsed",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "staticTreeHeight",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "treeHeight",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "byteCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "taskCount",
+          "description": ""
+        },
+        {
+          "type": "int[24]",
+          "name": "colorCounts",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2JointDef",
+      "description": "/ 2. if you add/remove shapes from a body and recompute the mass, the joints will be broken",
+      "fields": [
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Transform",
+          "name": "localFrameA",
+          "description": ""
+        },
+        {
+          "type": "b2Transform",
+          "name": "localFrameB",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "forceThreshold",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "torqueThreshold",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "constraintHertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "constraintDampingRatio",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "drawScale",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "collideConnected",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceJointDef",
+      "description": "/ @ingroup distance_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "length",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "lowerSpringForce",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "upperSpringForce",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "hertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "minLength",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxLength",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxMotorForce",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2MotorJointDef",
+      "description": "/ @ingroup motor_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "linearVelocity",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxVelocityForce",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "angularVelocity",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxVelocityTorque",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "linearHertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "linearDampingRatio",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxSpringForce",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "angularHertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "angularDampingRatio",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxSpringTorque",
+          "description": ""
+        },
+        {
+          "type": "b2Transform",
+          "name": "relativeTransform",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJointDef",
+      "description": "/ @ingroup mouse_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "hertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxForce",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2FilterJointDef",
+      "description": "/ @ingroup filter_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2PrismaticJointDef",
+      "description": "/ @ingroup prismatic_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "hertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "targetTranslation",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "lowerTranslation",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "upperTranslation",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxMotorForce",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2RevoluteJointDef",
+      "description": "/ @ingroup revolute_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "targetAngle",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "hertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "lowerAngle",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "upperAngle",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxMotorTorque",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2WeldJointDef",
+      "description": "/ @ingroup weld_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "linearHertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "angularHertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "linearDampingRatio",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "angularDampingRatio",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2WheelJointDef",
+      "description": "/ @ingroup wheel_joint",
+      "fields": [
+        {
+          "type": "b2JointDef",
+          "name": "base",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableSpring",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "hertz",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "dampingRatio",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableLimit",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "lowerTranslation",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "upperTranslation",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "enableMotor",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxMotorTorque",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "motorSpeed",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "internalValue",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ExplosionDef",
+      "description": "/ @ingroup world",
+      "fields": [
+        {
+          "type": "uint64_t",
+          "name": "maskBits",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "position",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "radius",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "falloff",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "impulsePerLength",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2SensorBeginTouchEvent",
+      "description": "/ A begin touch event is generated when a shape starts to overlap a sensor shape.",
+      "fields": [
+        {
+          "type": "b2ShapeId",
+          "name": "sensorShapeId",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "visitorShapeId",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2SensorEndTouchEvent",
+      "description": "/     Therefore you should always confirm the shape id is valid using b2Shape_IsValid.",
+      "fields": [
+        {
+          "type": "b2ShapeId",
+          "name": "sensorShapeId",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "visitorShapeId",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2SensorEvents",
+      "description": "/ Note: these may become invalid if bodies and/or shapes are destroyed",
+      "fields": [
+        {
+          "type": "b2SensorBeginTouchEvent*",
+          "name": "beginEvents",
+          "description": ""
+        },
+        {
+          "type": "b2SensorEndTouchEvent*",
+          "name": "endEvents",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "beginCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "endCount",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ContactBeginTouchEvent",
+      "description": "/ A begin touch event is generated when two shapes begin touching.",
+      "fields": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdA",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdB",
+          "description": ""
+        },
+        {
+          "type": "b2ContactId",
+          "name": "contactId",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ContactEndTouchEvent",
+      "description": "/     or shape, or changing a filter or body type.",
+      "fields": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdA",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdB",
+          "description": ""
+        },
+        {
+          "type": "b2ContactId",
+          "name": "contactId",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ContactHitEvent",
+      "description": "/ This may be reported for speculative contacts that have a confirmed impulse.",
+      "fields": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdA",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "normal",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "approachSpeed",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ContactEvents",
+      "description": "/ Note: these may become invalid if bodies and/or shapes are destroyed",
+      "fields": [
+        {
+          "type": "b2ContactBeginTouchEvent *",
+          "name": "beginEvents",
+          "description": ""
+        },
+        {
+          "type": "b2ContactEndTouchEvent *",
+          "name": "endEvents",
+          "description": ""
+        },
+        {
+          "type": "b2ContactHitEvent *",
+          "name": "hitEvents",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "beginCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "endCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "hitCount",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2BodyMoveEvent",
+      "description": "/ @note If sleeping is disabled all dynamic and kinematic bodies will trigger move events.",
+      "fields": [
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
+          "type": "b2Transform",
+          "name": "transform",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyId",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "fellAsleep",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2BodyEvents",
+      "description": "/ Note: this data becomes invalid if bodies are destroyed",
+      "fields": [
+        {
+          "type": "b2BodyMoveEvent *",
+          "name": "moveEvents",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "moveCount",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2JointEvent",
+      "description": "/ The observed forces and torques are not returned for efficiency reasons.",
+      "fields": [
+        {
+          "type": "b2JointId",
+          "name": "jointId",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2JointEvents",
+      "description": "/ Note: this data becomes invalid if joints are destroyed",
+      "fields": [
+        {
+          "type": "b2JointEvent *",
+          "name": "jointEvents",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "count",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ContactData",
+      "description": "/ @see b2Shape_GetContactData() and b2Body_GetContactData()",
+      "fields": [
+        {
+          "type": "b2ContactId",
+          "name": "contactId",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdA",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Manifold",
+          "name": "manifold",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2DebugDraw",
+      "description": "/ @ingroup world",
+      "fields": [
+        {
+          "type": "DrawPolygonCallback",
+          "name": "DrawPolygonFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawSolidPolygonCallback",
+          "name": "DrawSolidPolygonFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawCircleCallback",
+          "name": "DrawCircleFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawSolidCircleCallback",
+          "name": "DrawSolidCircleFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawSolidCapsuleCallback",
+          "name": "DrawSolidCapsuleFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawSegmentCallback",
+          "name": "DrawSegmentFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawTransformCallback",
+          "name": "DrawTransformFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawPointCallback",
+          "name": "DrawPointFcn",
+          "description": ""
+        },
+        {
+          "type": "DrawStringCallback",
+          "name": "DrawStringFcn",
+          "description": ""
+        },
+        {
+          "type": "b2AABB",
+          "name": "drawingBounds",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawShapes",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawJoints",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawJointExtras",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawBounds",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawMass",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawBodyNames",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawContacts",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawGraphColors",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawContactNormals",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawContactImpulses",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawContactFeatures",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawFrictionImpulses",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "drawIslands",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "context",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "aliases": [
+  ],
+  "enums": [
+    {
+      "name": "b2BodyType",
+      "description": "",
+      "values": [
+        {
+          "name": "B2_staticBody",
+          "value": 0,
+          "description": ""
+        },
+        {
+          "name": "B2_kinematicBody",
+          "value": 1,
+          "description": ""
+        },
+        {
+          "name": "B2_dynamicBody",
+          "value": 2,
+          "description": ""
+        },
+        {
+          "name": "B2_bodyTypeCount",
+          "value": 3,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeType",
+      "description": "",
+      "values": [
+        {
+          "name": "B2_circleShape",
+          "value": 0,
+          "description": ""
+        },
+        {
+          "name": "B2_capsuleShape",
+          "value": 1,
+          "description": ""
+        },
+        {
+          "name": "B2_segmentShape",
+          "value": 2,
+          "description": ""
+        },
+        {
+          "name": "B2_polygonShape",
+          "value": 3,
+          "description": ""
+        },
+        {
+          "name": "B2_chainSegmentShape",
+          "value": 4,
+          "description": ""
+        },
+        {
+          "name": "B2_shapeTypeCount",
+          "value": 5,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2JointType",
+      "description": "",
+      "values": [
+        {
+          "name": "B2_distanceJoint",
+          "value": 0,
+          "description": ""
+        },
+        {
+          "name": "B2_filterJoint",
+          "value": 1,
+          "description": ""
+        },
+        {
+          "name": "B2_motorJoint",
+          "value": 2,
+          "description": ""
+        },
+        {
+          "name": "B2_mouseJoint",
+          "value": 3,
+          "description": ""
+        },
+        {
+          "name": "B2_prismaticJoint",
+          "value": 4,
+          "description": ""
+        },
+        {
+          "name": "B2_revoluteJoint",
+          "value": 5,
+          "description": ""
+        },
+        {
+          "name": "B2_weldJoint",
+          "value": 6,
+          "description": ""
+        },
+        {
+          "name": "B2_wheelJoint",
+          "value": 7,
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2HexColor",
+      "description": "",
+      "values": [
+        {
+          "name": "B2_colorAliceBlue",
+          "value": 15792383,
+          "description": ""
+        },
+        {
+          "name": "B2_colorAntiqueWhite",
+          "value": 16444375,
+          "description": ""
+        },
+        {
+          "name": "B2_colorAqua",
+          "value": 65535,
+          "description": ""
+        },
+        {
+          "name": "B2_colorAquamarine",
+          "value": 8388564,
+          "description": ""
+        },
+        {
+          "name": "B2_colorAzure",
+          "value": 15794175,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBeige",
+          "value": 16119260,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBisque",
+          "value": 16770244,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBlack",
+          "value": 0,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBlanchedAlmond",
+          "value": 16772045,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBlue",
+          "value": 255,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBlueViolet",
+          "value": 9055202,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBrown",
+          "value": 10824234,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBurlywood",
+          "value": 14596231,
+          "description": ""
+        },
+        {
+          "name": "B2_colorCadetBlue",
+          "value": 6266528,
+          "description": ""
+        },
+        {
+          "name": "B2_colorChartreuse",
+          "value": 8388352,
+          "description": ""
+        },
+        {
+          "name": "B2_colorChocolate",
+          "value": 13789470,
+          "description": ""
+        },
+        {
+          "name": "B2_colorCoral",
+          "value": 16744272,
+          "description": ""
+        },
+        {
+          "name": "B2_colorCornflowerBlue",
+          "value": 6591981,
+          "description": ""
+        },
+        {
+          "name": "B2_colorCornsilk",
+          "value": 16775388,
+          "description": ""
+        },
+        {
+          "name": "B2_colorCrimson",
+          "value": 14423100,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkBlue",
+          "value": 139,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkCyan",
+          "value": 35723,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkGoldenRod",
+          "value": 12092939,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkGray",
+          "value": 11119017,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkGreen",
+          "value": 25600,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkKhaki",
+          "value": 12433259,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkMagenta",
+          "value": 9109643,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkOliveGreen",
+          "value": 5597999,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkOrange",
+          "value": 16747520,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkOrchid",
+          "value": 10040012,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkRed",
+          "value": 9109504,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkSalmon",
+          "value": 15308410,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkSeaGreen",
+          "value": 9419919,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkSlateBlue",
+          "value": 4734347,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkSlateGray",
+          "value": 3100495,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkTurquoise",
+          "value": 52945,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDarkViolet",
+          "value": 9699539,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDeepPink",
+          "value": 16716947,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDeepSkyBlue",
+          "value": 49151,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDimGray",
+          "value": 6908265,
+          "description": ""
+        },
+        {
+          "name": "B2_colorDodgerBlue",
+          "value": 2003199,
+          "description": ""
+        },
+        {
+          "name": "B2_colorFireBrick",
+          "value": 11674146,
+          "description": ""
+        },
+        {
+          "name": "B2_colorFloralWhite",
+          "value": 16775920,
+          "description": ""
+        },
+        {
+          "name": "B2_colorForestGreen",
+          "value": 2263842,
+          "description": ""
+        },
+        {
+          "name": "B2_colorGainsboro",
+          "value": 14474460,
+          "description": ""
+        },
+        {
+          "name": "B2_colorGhostWhite",
+          "value": 16316671,
+          "description": ""
+        },
+        {
+          "name": "B2_colorGold",
+          "value": 16766720,
+          "description": ""
+        },
+        {
+          "name": "B2_colorGoldenRod",
+          "value": 14329120,
+          "description": ""
+        },
+        {
+          "name": "B2_colorGray",
+          "value": 8421504,
+          "description": ""
+        },
+        {
+          "name": "B2_colorGreen",
+          "value": 32768,
+          "description": ""
+        },
+        {
+          "name": "B2_colorGreenYellow",
+          "value": 11403055,
+          "description": ""
+        },
+        {
+          "name": "B2_colorHoneyDew",
+          "value": 15794160,
+          "description": ""
+        },
+        {
+          "name": "B2_colorHotPink",
+          "value": 16738740,
+          "description": ""
+        },
+        {
+          "name": "B2_colorIndianRed",
+          "value": 13458524,
+          "description": ""
+        },
+        {
+          "name": "B2_colorIndigo",
+          "value": 4915330,
+          "description": ""
+        },
+        {
+          "name": "B2_colorIvory",
+          "value": 16777200,
+          "description": ""
+        },
+        {
+          "name": "B2_colorKhaki",
+          "value": 15787660,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLavender",
+          "value": 15132410,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLavenderBlush",
+          "value": 16773365,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLawnGreen",
+          "value": 8190976,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLemonChiffon",
+          "value": 16775885,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightBlue",
+          "value": 11393254,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightCoral",
+          "value": 15761536,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightCyan",
+          "value": 14745599,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightGoldenRodYellow",
+          "value": 16448210,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightGray",
+          "value": 13882323,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightGreen",
+          "value": 9498256,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightPink",
+          "value": 16758465,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightSalmon",
+          "value": 16752762,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightSeaGreen",
+          "value": 2142890,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightSkyBlue",
+          "value": 8900346,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightSlateGray",
+          "value": 7833753,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightSteelBlue",
+          "value": 11584734,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLightYellow",
+          "value": 16777184,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLime",
+          "value": 65280,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLimeGreen",
+          "value": 3329330,
+          "description": ""
+        },
+        {
+          "name": "B2_colorLinen",
+          "value": 16445670,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMagenta",
+          "value": 16711935,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMaroon",
+          "value": 8388608,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumAquaMarine",
+          "value": 6737322,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumBlue",
+          "value": 205,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumOrchid",
+          "value": 12211667,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumPurple",
+          "value": 9662683,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumSeaGreen",
+          "value": 3978097,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumSlateBlue",
+          "value": 8087790,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumSpringGreen",
+          "value": 64154,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumTurquoise",
+          "value": 4772300,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMediumVioletRed",
+          "value": 13047173,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMidnightBlue",
+          "value": 1644912,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMintCream",
+          "value": 16121850,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMistyRose",
+          "value": 16770273,
+          "description": ""
+        },
+        {
+          "name": "B2_colorMoccasin",
+          "value": 16770229,
+          "description": ""
+        },
+        {
+          "name": "B2_colorNavajoWhite",
+          "value": 16768685,
+          "description": ""
+        },
+        {
+          "name": "B2_colorNavy",
+          "value": 128,
+          "description": ""
+        },
+        {
+          "name": "B2_colorOldLace",
+          "value": 16643558,
+          "description": ""
+        },
+        {
+          "name": "B2_colorOlive",
+          "value": 8421376,
+          "description": ""
+        },
+        {
+          "name": "B2_colorOliveDrab",
+          "value": 7048739,
+          "description": ""
+        },
+        {
+          "name": "B2_colorOrange",
+          "value": 16753920,
+          "description": ""
+        },
+        {
+          "name": "B2_colorOrangeRed",
+          "value": 16729344,
+          "description": ""
+        },
+        {
+          "name": "B2_colorOrchid",
+          "value": 14315734,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPaleGoldenRod",
+          "value": 15657130,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPaleGreen",
+          "value": 10025880,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPaleTurquoise",
+          "value": 11529966,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPaleVioletRed",
+          "value": 14381203,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPapayaWhip",
+          "value": 16773077,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPeachPuff",
+          "value": 16767673,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPeru",
+          "value": 13468991,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPink",
+          "value": 16761035,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPlum",
+          "value": 14524637,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPowderBlue",
+          "value": 11591910,
+          "description": ""
+        },
+        {
+          "name": "B2_colorPurple",
+          "value": 8388736,
+          "description": ""
+        },
+        {
+          "name": "B2_colorRebeccaPurple",
+          "value": 6697881,
+          "description": ""
+        },
+        {
+          "name": "B2_colorRed",
+          "value": 16711680,
+          "description": ""
+        },
+        {
+          "name": "B2_colorRosyBrown",
+          "value": 12357519,
+          "description": ""
+        },
+        {
+          "name": "B2_colorRoyalBlue",
+          "value": 4286945,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSaddleBrown",
+          "value": 9127187,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSalmon",
+          "value": 16416882,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSandyBrown",
+          "value": 16032864,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSeaGreen",
+          "value": 3050327,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSeaShell",
+          "value": 16774638,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSienna",
+          "value": 10506797,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSilver",
+          "value": 12632256,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSkyBlue",
+          "value": 8900331,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSlateBlue",
+          "value": 6970061,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSlateGray",
+          "value": 7372944,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSnow",
+          "value": 16775930,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSpringGreen",
+          "value": 65407,
+          "description": ""
+        },
+        {
+          "name": "B2_colorSteelBlue",
+          "value": 4620980,
+          "description": ""
+        },
+        {
+          "name": "B2_colorTan",
+          "value": 13808780,
+          "description": ""
+        },
+        {
+          "name": "B2_colorTeal",
+          "value": 32896,
+          "description": ""
+        },
+        {
+          "name": "B2_colorThistle",
+          "value": 14204888,
+          "description": ""
+        },
+        {
+          "name": "B2_colorTomato",
+          "value": 16737095,
+          "description": ""
+        },
+        {
+          "name": "B2_colorTurquoise",
+          "value": 4251856,
+          "description": ""
+        },
+        {
+          "name": "B2_colorViolet",
+          "value": 15631086,
+          "description": ""
+        },
+        {
+          "name": "B2_colorWheat",
+          "value": 16113331,
+          "description": ""
+        },
+        {
+          "name": "B2_colorWhite",
+          "value": 16777215,
+          "description": ""
+        },
+        {
+          "name": "B2_colorWhiteSmoke",
+          "value": 16119285,
+          "description": ""
+        },
+        {
+          "name": "B2_colorYellow",
+          "value": 16776960,
+          "description": ""
+        },
+        {
+          "name": "B2_colorYellowGreen",
+          "value": 10145074,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBox2DRed",
+          "value": 14430514,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBox2DBlue",
+          "value": 3190463,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBox2DGreen",
+          "value": 9226532,
+          "description": ""
+        },
+        {
+          "name": "B2_colorBox2DYellow",
+          "value": 16772748,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "callbacks": [
+    {
+      "name": "b2TaskCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "int",
+          "name": "startIndex"
+        },
+        {
+          "type": "int",
+          "name": "endIndex"
+        },
+        {
+          "type": "uint32_t",
+          "name": "workerIndex"
+        },
+        {
+          "type": "void *",
+          "name": "taskContext"
+        }
+      ]
+    },
+    {
+      "name": "b2EnqueueTaskCallback",
+      "description": "",
+      "returnType": "void *",
+      "params": [
+        {
+          "type": "b2TaskCallback *",
+          "name": "task"
+        },
+        {
+          "type": "int",
+          "name": "itemCount"
+        },
+        {
+          "type": "int",
+          "name": "minRange"
+        },
+        {
+          "type": "void *",
+          "name": "taskContext"
+        },
+        {
+          "type": "void *",
+          "name": "userContext"
+        }
+      ]
+    },
+    {
+      "name": "b2FinishTaskCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "void *",
+          "name": "userTask"
+        },
+        {
+          "type": "void *",
+          "name": "userContext"
+        }
+      ]
+    },
+    {
+      "name": "b2FrictionCallback",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "float",
+          "name": "frictionA"
+        },
+        {
+          "type": "int",
+          "name": "userMaterialIdA"
+        },
+        {
+          "type": "float",
+          "name": "frictionB"
+        },
+        {
+          "type": "int",
+          "name": "userMaterialIdB"
+        }
+      ]
+    },
+    {
+      "name": "b2RestitutionCallback",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "float",
+          "name": "restitutionA"
+        },
+        {
+          "type": "int",
+          "name": "userMaterialIdA"
+        },
+        {
+          "type": "float",
+          "name": "restitutionB"
+        },
+        {
+          "type": "int",
+          "name": "userMaterialIdB"
+        }
+      ]
+    },
+    {
+      "name": "b2CustomFilterFcn",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdA"
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdB"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "b2PreSolveFcn",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdA"
+        },
+        {
+          "type": "b2ShapeId",
+          "name": "shapeIdB"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "normal"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "b2OverlapResultFcn",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "b2CastResultFcn",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "normal"
+        },
+        {
+          "type": "float",
+          "name": "fraction"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "b2PlaneResultFcn",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "b2ShapeId",
+          "name": "shapeId"
+        },
+        {
+          "type": "const b2PlaneResult *",
+          "name": "plane"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawPolygonCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "const b2Vec2 *",
+          "name": "vertices"
+        },
+        {
+          "type": "int",
+          "name": "vertexCount"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawSolidPolygonCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        },
+        {
+          "type": "const b2Vec2 *",
+          "name": "vertices"
+        },
+        {
+          "type": "int",
+          "name": "vertexCount"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawCircleCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "center"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawSolidCircleCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawSolidCapsuleCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "p1"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "p2"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawSegmentCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "p1"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "p2"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawTransformCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawPointCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "p"
+        },
+        {
+          "type": "float",
+          "name": "size"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    },
+    {
+      "name": "DrawStringCallback",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "p"
+        },
+        {
+          "type": "const char *",
+          "name": "s"
+        },
+        {
+          "type": "b2HexColor",
+          "name": "color"
+        },
+        {
+          "type": "void *",
+          "name": "context"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "b2DefaultWorldDef",
+      "description": "",
+      "returnType": "b2WorldDef"
+    },
+    {
+      "name": "b2DefaultBodyDef",
+      "description": "",
+      "returnType": "b2BodyDef"
+    },
+    {
+      "name": "b2DefaultFilter",
+      "description": "",
+      "returnType": "b2Filter"
+    },
+    {
+      "name": "b2DefaultQueryFilter",
+      "description": "",
+      "returnType": "b2QueryFilter"
+    },
+    {
+      "name": "b2DefaultSurfaceMaterial",
+      "description": "",
+      "returnType": "b2SurfaceMaterial"
+    },
+    {
+      "name": "b2DefaultShapeDef",
+      "description": "",
+      "returnType": "b2ShapeDef"
+    },
+    {
+      "name": "b2DefaultChainDef",
+      "description": "",
+      "returnType": "b2ChainDef"
+    },
+    {
+      "name": "b2DefaultDistanceJointDef",
+      "description": "",
+      "returnType": "b2DistanceJointDef"
+    },
+    {
+      "name": "b2DefaultMotorJointDef",
+      "description": "",
+      "returnType": "b2MotorJointDef"
+    },
+    {
+      "name": "b2DefaultMouseJointDef",
+      "description": "",
+      "returnType": "b2MouseJointDef"
+    },
+    {
+      "name": "b2DefaultFilterJointDef",
+      "description": "",
+      "returnType": "b2FilterJointDef"
+    },
+    {
+      "name": "b2DefaultPrismaticJointDef",
+      "description": "",
+      "returnType": "b2PrismaticJointDef"
+    },
+    {
+      "name": "b2DefaultRevoluteJointDef",
+      "description": "",
+      "returnType": "b2RevoluteJointDef"
+    },
+    {
+      "name": "b2DefaultWeldJointDef",
+      "description": "",
+      "returnType": "b2WeldJointDef"
+    },
+    {
+      "name": "b2DefaultWheelJointDef",
+      "description": "",
+      "returnType": "b2WheelJointDef"
+    },
+    {
+      "name": "b2DefaultExplosionDef",
+      "description": "",
+      "returnType": "b2ExplosionDef"
+    },
+    {
+      "name": "b2DefaultDebugDraw",
+      "description": "",
+      "returnType": "b2DebugDraw"
+    }
+  ]
+}

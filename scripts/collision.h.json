@@ -1,0 +1,2010 @@
+{
+  "defines": [
+    {
+      "name": "B2_MAX_POLYGON_VERTICES",
+      "type": "INT",
+      "value": 8,
+      "description": ""
+    }
+  ],
+  "structs": [
+    {
+      "name": "b2RayCastInput",
+      "description": "/ Low level ray cast input data",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "origin",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "translation",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxFraction",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeProxy",
+      "description": "/ You can provide between 1 and B2_MAX_POLYGON_VERTICES and a radius.",
+      "fields": [
+        {
+          "type": "b2Vec2[B2_MAX_POLYGON_VERTICES]",
+          "name": "points",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "count",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "radius",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeCastInput",
+      "description": "/ A capsule is two points with a non-zero radius. A box is four points with a zero radius.",
+      "fields": [
+        {
+          "type": "b2ShapeProxy",
+          "name": "proxy",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "translation",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "maxFraction",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "canEncroach",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2CastOutput",
+      "description": "/ Low level ray cast or shape-cast output data. Returns a zero fraction and normal in the case of initial overlap.",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "normal",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "fraction",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "iterations",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "hit",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2MassData",
+      "description": "/ This holds the mass data computed for a shape.",
+      "fields": [
+        {
+          "type": "float",
+          "name": "mass",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "center",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "rotationalInertia",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Circle",
+      "description": "/ A solid circle",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "center",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "radius",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Capsule",
+      "description": "/ by a rectangle.",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "center1",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "center2",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "radius",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Polygon",
+      "description": "/ b2MakePolygon or b2MakeBox.",
+      "fields": [
+        {
+          "type": "b2Vec2[B2_MAX_POLYGON_VERTICES]",
+          "name": "vertices",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2[B2_MAX_POLYGON_VERTICES]",
+          "name": "normals",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "centroid",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "radius",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "count",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Segment",
+      "description": "/ A line segment with two-sided collision.",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "point1",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point2",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ChainSegment",
+      "description": "/ ghost1 -> point1 -> point2 -> ghost2",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "ghost1",
+          "description": ""
+        },
+        {
+          "type": "b2Segment",
+          "name": "segment",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "ghost2",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "chainId",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Hull",
+      "description": "/ @warning Do not modify these values directly, instead use b2ComputeHull()",
+      "fields": [
+        {
+          "type": "b2Vec2[B2_MAX_POLYGON_VERTICES]",
+          "name": "points",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "count",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2SegmentDistanceResult",
+      "description": "/ Result of computing the distance between two line segments",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "closest1",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "closest2",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "fraction1",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "fraction2",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "distanceSquared",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2SimplexCache",
+      "description": "/ Users should generally just zero initialize this structure for each call.",
+      "fields": [
+        {
+          "type": "uint16_t",
+          "name": "count",
+          "description": ""
+        },
+        {
+          "type": "uint8_t[3]",
+          "name": "indexA",
+          "description": ""
+        },
+        {
+          "type": "uint8_t[3]",
+          "name": "indexB",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceInput",
+      "description": "/ Input for b2ShapeDistance",
+      "fields": [
+        {
+          "type": "b2ShapeProxy",
+          "name": "proxyA",
+          "description": ""
+        },
+        {
+          "type": "b2ShapeProxy",
+          "name": "proxyB",
+          "description": ""
+        },
+        {
+          "type": "b2Transform",
+          "name": "transformA",
+          "description": ""
+        },
+        {
+          "type": "b2Transform",
+          "name": "transformB",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "useRadii",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2DistanceOutput",
+      "description": "/ Output for b2ShapeDistance",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "pointA",
+          "description": "/< Closest point on shapeA"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "pointB",
+          "description": "/< Closest point on shapeB"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "normal",
+          "description": "/< Normal vector that points from A to B. Invalid if distance is zero."
+        },
+        {
+          "type": "float",
+          "name": "distance",
+          "description": "/< The final distance, zero if overlapped"
+        },
+        {
+          "type": "int",
+          "name": "iterations",
+          "description": "/< Number of GJK iterations used"
+        },
+        {
+          "type": "int",
+          "name": "simplexCount",
+          "description": "/< The number of simplexes stored in the simplex array"
+        }
+      ]
+    },
+    {
+      "name": "b2SimplexVertex",
+      "description": "/ Simplex vertex for debugging the GJK algorithm",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "wA",
+          "description": "/< support point in proxyA"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "wB",
+          "description": "/< support point in proxyB"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "w",
+          "description": "/< wB - wA"
+        },
+        {
+          "type": "float",
+          "name": "a",
+          "description": "/< barycentric coordinate for closest point"
+        },
+        {
+          "type": "int",
+          "name": "indexA",
+          "description": "/< wA index"
+        },
+        {
+          "type": "int",
+          "name": "indexB",
+          "description": "/< wB index"
+        }
+      ]
+    },
+    {
+      "name": "b2Simplex",
+      "description": "/ Simplex from the GJK algorithm",
+      "fields": [
+        {
+          "type": "b2SimplexVertex",
+          "name": "v1",
+          "description": "/< vertices"
+        },
+        {
+          "type": "b2SimplexVertex",
+          "name": "v2",
+          "description": "/< vertices"
+        },
+        {
+          "type": "b2SimplexVertex",
+          "name": "v3",
+          "description": "/< vertices"
+        },
+        {
+          "type": "int",
+          "name": "count",
+          "description": "/< number of valid vertices"
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeCastPairInput",
+      "description": "/ Input parameters for b2ShapeCast",
+      "fields": [
+        {
+          "type": "b2ShapeProxy",
+          "name": "proxyA",
+          "description": "/< The proxy for shape A"
+        },
+        {
+          "type": "b2ShapeProxy",
+          "name": "proxyB",
+          "description": "/< The proxy for shape B"
+        },
+        {
+          "type": "b2Transform",
+          "name": "transformA",
+          "description": "/< The world transform for shape A"
+        },
+        {
+          "type": "b2Transform",
+          "name": "transformB",
+          "description": "/< The world transform for shape B"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "translationB",
+          "description": "/< The translation of shape B"
+        },
+        {
+          "type": "float",
+          "name": "maxFraction",
+          "description": "/< The fraction of the translation to consider, typically 1"
+        },
+        {
+          "type": "bool",
+          "name": "canEncroach",
+          "description": "/< Allows shapes with a radius to move slightly closer if already touching"
+        }
+      ]
+    },
+    {
+      "name": "b2Sweep",
+      "description": "/ position.",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "localCenter",
+          "description": "/< Local center of mass position"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "c1",
+          "description": "/< Starting center of mass world position"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "c2",
+          "description": "/< Ending center of mass world position"
+        },
+        {
+          "type": "b2Rot",
+          "name": "q1",
+          "description": "/< Starting world rotation"
+        },
+        {
+          "type": "b2Rot",
+          "name": "q2",
+          "description": "/< Ending world rotation"
+        }
+      ]
+    },
+    {
+      "name": "b2TOIInput",
+      "description": "/ Time of impact input",
+      "fields": [
+        {
+          "type": "b2ShapeProxy",
+          "name": "proxyA",
+          "description": "/< The proxy for shape A"
+        },
+        {
+          "type": "b2ShapeProxy",
+          "name": "proxyB",
+          "description": "/< The proxy for shape B"
+        },
+        {
+          "type": "b2Sweep",
+          "name": "sweepA",
+          "description": "/< The movement of shape A"
+        },
+        {
+          "type": "b2Sweep",
+          "name": "sweepB",
+          "description": "/< The movement of shape B"
+        },
+        {
+          "type": "float",
+          "name": "maxFraction",
+          "description": "/< Defines the sweep interval [0, maxFraction]"
+        }
+      ]
+    },
+    {
+      "name": "b2TOIOutput",
+      "description": "/ Time of impact output",
+      "fields": [
+        {
+          "type": "b2TOIState",
+          "name": "state",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "normal",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "fraction",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2ManifoldPoint",
+      "description": "/ the time step.",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "point",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "anchorA",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "anchorB",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "separation",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "normalImpulse",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "tangentImpulse",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "totalNormalImpulse",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "normalVelocity",
+          "description": ""
+        },
+        {
+          "type": "uint16_t",
+          "name": "id",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "persisted",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2Manifold",
+      "description": "/ @note Box2D uses speculative collision so some contact points may be separated.",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "normal",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "rollingImpulse",
+          "description": ""
+        },
+        {
+          "type": "b2ManifoldPoint[2]",
+          "name": "points",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "pointCount",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree",
+      "description": "/ It is placed here for performance reasons.",
+      "fields": [
+        {
+          "type": "int",
+          "name": "root",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "nodeCount",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "nodeCapacity",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "freeList",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "proxyCount",
+          "description": ""
+        },
+        {
+          "type": "int *",
+          "name": "leafIndices",
+          "description": ""
+        },
+        {
+          "type": "b2AABB *",
+          "name": "leafBoxes",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2 *",
+          "name": "leafCenters",
+          "description": ""
+        },
+        {
+          "type": "int *",
+          "name": "binIndices",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "rebuildCapacity",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2TreeStats",
+      "description": "/ These are performance results returned by dynamic tree queries.",
+      "fields": [
+        {
+          "type": "int",
+          "name": "nodeVisits",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "leafVisits",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2PlaneResult",
+      "description": "/ These are the collision planes returned from b2World_CollideMover",
+      "fields": [
+        {
+          "type": "b2Plane",
+          "name": "plane",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "hit",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2CollisionPlane",
+      "description": "/ this is assembled by the user from plane results in b2PlaneResult",
+      "fields": [
+        {
+          "type": "b2Plane",
+          "name": "plane",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "pushLimit",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "push",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "clipVelocity",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "name": "b2PlaneSolverResult",
+      "description": "/ Result returned by b2SolvePlanes",
+      "fields": [
+        {
+          "type": "b2Vec2",
+          "name": "translation",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "iterationCount",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "aliases": [
+  ],
+  "enums": [
+    {
+      "name": "b2TOIState",
+      "description": "",
+      "values": [
+        {
+          "name": "B2_toiStateUnknown",
+          "value": 0,
+          "description": ""
+        },
+        {
+          "name": "B2_toiStateFailed",
+          "value": 1,
+          "description": ""
+        },
+        {
+          "name": "B2_toiStateOverlapped",
+          "value": 2,
+          "description": ""
+        },
+        {
+          "name": "B2_toiStateHit",
+          "value": 3,
+          "description": ""
+        },
+        {
+          "name": "B2_toiStateSeparated",
+          "value": 4,
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "callbacks": [
+  ],
+  "functions": [
+    {
+      "name": "b2IsValidRay",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "const b2RayCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2MakePolygon",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "const b2Hull *",
+          "name": "hull"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeOffsetPolygon",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "const b2Hull *",
+          "name": "hull"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "position"
+        },
+        {
+          "type": "b2Rot",
+          "name": "rotation"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeOffsetRoundedPolygon",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "const b2Hull *",
+          "name": "hull"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "position"
+        },
+        {
+          "type": "b2Rot",
+          "name": "rotation"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeSquare",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "float",
+          "name": "halfWidth"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeBox",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "float",
+          "name": "halfWidth"
+        },
+        {
+          "type": "float",
+          "name": "halfHeight"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeRoundedBox",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "float",
+          "name": "halfWidth"
+        },
+        {
+          "type": "float",
+          "name": "halfHeight"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeOffsetBox",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "float",
+          "name": "halfWidth"
+        },
+        {
+          "type": "float",
+          "name": "halfHeight"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "center"
+        },
+        {
+          "type": "b2Rot",
+          "name": "rotation"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeOffsetRoundedBox",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "float",
+          "name": "halfWidth"
+        },
+        {
+          "type": "float",
+          "name": "halfHeight"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "center"
+        },
+        {
+          "type": "b2Rot",
+          "name": "rotation"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        }
+      ]
+    },
+    {
+      "name": "b2TransformPolygon",
+      "description": "",
+      "returnType": "b2Polygon",
+      "params": [
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        },
+        {
+          "type": "const b2Polygon *",
+          "name": "polygon"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeCircleMass",
+      "description": "",
+      "returnType": "b2MassData",
+      "params": [
+        {
+          "type": "const b2Circle *",
+          "name": "shape"
+        },
+        {
+          "type": "float",
+          "name": "density"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeCapsuleMass",
+      "description": "",
+      "returnType": "b2MassData",
+      "params": [
+        {
+          "type": "const b2Capsule *",
+          "name": "shape"
+        },
+        {
+          "type": "float",
+          "name": "density"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputePolygonMass",
+      "description": "",
+      "returnType": "b2MassData",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "shape"
+        },
+        {
+          "type": "float",
+          "name": "density"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeCircleAABB",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "const b2Circle *",
+          "name": "shape"
+        },
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeCapsuleAABB",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "const b2Capsule *",
+          "name": "shape"
+        },
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputePolygonAABB",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "shape"
+        },
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeSegmentAABB",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "const b2Segment *",
+          "name": "shape"
+        },
+        {
+          "type": "b2Transform",
+          "name": "transform"
+        }
+      ]
+    },
+    {
+      "name": "b2PointInCircle",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "const b2Circle *",
+          "name": "shape"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        }
+      ]
+    },
+    {
+      "name": "b2PointInCapsule",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "const b2Capsule *",
+          "name": "shape"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        }
+      ]
+    },
+    {
+      "name": "b2PointInPolygon",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "shape"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "point"
+        }
+      ]
+    },
+    {
+      "name": "b2RayCastCircle",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Circle *",
+          "name": "shape"
+        },
+        {
+          "type": "const b2RayCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2RayCastCapsule",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Capsule *",
+          "name": "shape"
+        },
+        {
+          "type": "const b2RayCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2RayCastSegment",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Segment *",
+          "name": "shape"
+        },
+        {
+          "type": "const b2RayCastInput *",
+          "name": "input"
+        },
+        {
+          "type": "bool",
+          "name": "oneSided"
+        }
+      ]
+    },
+    {
+      "name": "b2RayCastPolygon",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "shape"
+        },
+        {
+          "type": "const b2RayCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeCastCircle",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Circle *",
+          "name": "shape"
+        },
+        {
+          "type": " const b2ShapeCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeCastCapsule",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Capsule *",
+          "name": "shape"
+        },
+        {
+          "type": "const b2ShapeCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeCastSegment",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Segment *",
+          "name": "shape"
+        },
+        {
+          "type": "const b2ShapeCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeCastPolygon",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "shape"
+        },
+        {
+          "type": "const b2ShapeCastInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2ComputeHull",
+      "description": "",
+      "returnType": "b2Hull",
+      "params": [
+        {
+          "type": "const b2Vec2 *",
+          "name": "points"
+        },
+        {
+          "type": "int",
+          "name": "count"
+        }
+      ]
+    },
+    {
+      "name": "b2ValidateHull",
+      "description": "",
+      "returnType": "bool",
+      "params": [
+        {
+          "type": "const b2Hull *",
+          "name": "hull"
+        }
+      ]
+    },
+    {
+      "name": "b2SegmentDistance",
+      "description": "",
+      "returnType": "b2SegmentDistanceResult",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "p1"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "q1"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "p2"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "q2"
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeDistance",
+      "description": "",
+      "returnType": "b2DistanceOutput",
+      "params": [
+        {
+          "type": "const b2DistanceInput *",
+          "name": "input"
+        },
+        {
+          "type": "b2SimplexCache *",
+          "name": "cache"
+        },
+        {
+          "type": "b2Simplex *",
+          "name": "simplexes"
+        }
+      ]
+    },
+    {
+      "name": "b2ShapeCast",
+      "description": "",
+      "returnType": "b2CastOutput",
+      "params": [
+        {
+          "type": "const b2ShapeCastPairInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeProxy",
+      "description": "",
+      "returnType": "b2ShapeProxy",
+      "params": [
+        {
+          "type": "const b2Vec2 *",
+          "name": "points"
+        },
+        {
+          "type": "int",
+          "name": "count"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        }
+      ]
+    },
+    {
+      "name": "b2MakeOffsetProxy",
+      "description": "",
+      "returnType": "b2ShapeProxy",
+      "params": [
+        {
+          "type": "const b2Vec2 *",
+          "name": "points"
+        },
+        {
+          "type": "int",
+          "name": "count"
+        },
+        {
+          "type": "float",
+          "name": "radius"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "position"
+        },
+        {
+          "type": "b2Rot",
+          "name": "rotation"
+        }
+      ]
+    },
+    {
+      "name": "b2GetSweepTransform",
+      "description": "",
+      "returnType": "b2Transform",
+      "params": [
+        {
+          "type": "const b2Sweep *",
+          "name": "sweep"
+        },
+        {
+          "type": "float",
+          "name": "time"
+        }
+      ]
+    },
+    {
+      "name": "b2TimeOfImpact",
+      "description": "",
+      "returnType": "b2TOIOutput",
+      "params": [
+        {
+          "type": "const b2TOIInput *",
+          "name": "input"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideCircles",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Circle *",
+          "name": "circleA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Circle *",
+          "name": "circleB"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideCapsuleAndCircle",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Capsule *",
+          "name": "capsuleA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Circle *",
+          "name": "circleB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideSegmentAndCircle",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Segment *",
+          "name": "segmentA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Circle *",
+          "name": "circleB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollidePolygonAndCircle",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "polygonA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Circle *",
+          "name": "circleB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideCapsules",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Capsule *",
+          "name": "capsuleA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "capsuleB"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideSegmentAndCapsule",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Segment *",
+          "name": "segmentA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "capsuleB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollidePolygonAndCapsule",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "polygonA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "capsuleB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollidePolygons",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Polygon *",
+          "name": "polygonA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Polygon *",
+          "name": "polygonB"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideSegmentAndPolygon",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2Segment *",
+          "name": "segmentA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Polygon *",
+          "name": "polygonB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideChainSegmentAndCircle",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2ChainSegment *",
+          "name": "segmentA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Circle *",
+          "name": "circleB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideChainSegmentAndCapsule",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2ChainSegment *",
+          "name": "segmentA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Capsule *",
+          "name": "capsuleB"
+        }
+      ]
+    },
+    {
+      "name": "b2CollideChainSegmentAndPolygon",
+      "description": "",
+      "returnType": "b2Manifold",
+      "params": [
+        {
+          "type": "const b2ChainSegment *",
+          "name": "segmentA"
+        },
+        {
+          "type": "b2Transform",
+          "name": "xfA"
+        },
+        {
+          "type": "const b2Polygon *",
+          "name": "polygonB"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_Create",
+      "description": "",
+      "returnType": "b2DynamicTree"
+    },
+    {
+      "name": "b2DynamicTree_Destroy",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_CreateProxy",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "b2AABB",
+          "name": "aabb"
+        },
+        {
+          "type": "uint64_t",
+          "name": "categoryBits"
+        },
+        {
+          "type": "uint64_t",
+          "name": "userData"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_DestroyProxy",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "int",
+          "name": "proxyId"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_MoveProxy",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "int",
+          "name": "proxyId"
+        },
+        {
+          "type": "b2AABB",
+          "name": "aabb"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_EnlargeProxy",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "int",
+          "name": "proxyId"
+        },
+        {
+          "type": "b2AABB",
+          "name": "aabb"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_SetCategoryBits",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "int",
+          "name": "proxyId"
+        },
+        {
+          "type": "uint64_t",
+          "name": "categoryBits"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetCategoryBits",
+      "description": "",
+      "returnType": "uint64_t",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "int",
+          "name": "proxyId"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_Query",
+      "description": "",
+      "returnType": "b2TreeStats",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "b2AABB",
+          "name": "aabb"
+        },
+        {
+          "type": "uint64_t",
+          "name": "maskBits"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_RayCast",
+      "description": "",
+      "returnType": "b2TreeStats",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "const b2RayCastInput *",
+          "name": "input"
+        },
+        {
+          "type": "uint64_t",
+          "name": "maskBits"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_ShapeCast",
+      "description": "",
+      "returnType": "b2TreeStats",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "const b2ShapeCastInput *",
+          "name": "input"
+        },
+        {
+          "type": "uint64_t",
+          "name": "maskBits"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetHeight",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetAreaRatio",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetRootBounds",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetProxyCount",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_Rebuild",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "bool",
+          "name": "fullBuild"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetByteCount",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetUserData",
+      "description": "",
+      "returnType": "uint64_t",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "int",
+          "name": "proxyId"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_GetAABB",
+      "description": "",
+      "returnType": "b2AABB",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        },
+        {
+          "type": "int",
+          "name": "proxyId"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_Validate",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2DynamicTree_ValidateNoEnlarged",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "const b2DynamicTree *",
+          "name": "tree"
+        }
+      ]
+    },
+    {
+      "name": "b2SolvePlanes",
+      "description": "",
+      "returnType": "b2PlaneSolverResult",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "targetDelta"
+        },
+        {
+          "type": "b2CollisionPlane *",
+          "name": "planes"
+        },
+        {
+          "type": "int",
+          "name": "count"
+        }
+      ]
+    },
+    {
+      "name": "b2ClipVector",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2Vec2",
+          "name": "vector"
+        },
+        {
+          "type": "const b2CollisionPlane *",
+          "name": "planes"
+        },
+        {
+          "type": "int",
+          "name": "count"
+        }
+      ]
+    }
+  ]
+}

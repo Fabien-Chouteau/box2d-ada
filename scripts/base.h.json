@@ -1,0 +1,210 @@
+{
+  "defines": [
+    {
+      "name": "B2_BREAKPOINT",
+      "type": "UNKNOWN",
+      "value": "__debugbreak()",
+      "description": ""
+    },
+    {
+      "name": "B2_ASSERT( condition )",
+      "type": "MACRO",
+      "value": "",
+      "description": ""
+    },
+    {
+      "name": "B2_ASSERT( ... )",
+      "type": "MACRO",
+      "value": "( (void)0 )",
+      "description": ""
+    },
+    {
+      "name": "B2_HASH_INIT",
+      "type": "INT",
+      "value": 5381,
+      "description": ""
+    }
+  ],
+  "structs": [
+    {
+      "name": "b2Version",
+      "description": "/ See https://semver.org/",
+      "fields": [
+        {
+          "type": "int",
+          "name": "major",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "minor",
+          "description": ""
+        },
+        {
+          "type": "int",
+          "name": "revision",
+          "description": ""
+        }
+      ]
+    }
+  ],
+  "aliases": [
+  ],
+  "enums": [
+  ],
+  "callbacks": [
+    {
+      "name": "b2AllocFcn",
+      "description": "",
+      "returnType": "void *",
+      "params": [
+        {
+          "type": "unsigned int",
+          "name": "size"
+        },
+        {
+          "type": "int",
+          "name": "alignment"
+        }
+      ]
+    },
+    {
+      "name": "b2FreeFcn",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "void *",
+          "name": "mem"
+        }
+      ]
+    },
+    {
+      "name": "b2AssertFcn",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "const char *",
+          "name": "condition"
+        },
+        {
+          "type": "const char *",
+          "name": "fileName"
+        },
+        {
+          "type": "int",
+          "name": "lineNumber"
+        }
+      ]
+    }
+  ],
+  "functions": [
+    {
+      "name": "b2SetAllocator",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2AllocFcn *",
+          "name": "allocFcn"
+        },
+        {
+          "type": "b2FreeFcn *",
+          "name": "freeFcn"
+        }
+      ]
+    },
+    {
+      "name": "b2GetByteCount",
+      "description": "",
+      "returnType": "int"
+    },
+    {
+      "name": "b2SetAssertFcn",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2AssertFcn *",
+          "name": "assertFcn"
+        }
+      ]
+    },
+    {
+      "name": "b2GetVersion",
+      "description": "",
+      "returnType": "b2Version"
+    },
+    {
+      "name": "b2InternalAssertFcn",
+      "description": "",
+      "returnType": "int",
+      "params": [
+        {
+          "type": "const char *",
+          "name": "condition"
+        },
+        {
+          "type": "const char *",
+          "name": "fileName"
+        },
+        {
+          "type": "int",
+          "name": "lineNumber"
+        }
+      ]
+    },
+    {
+      "name": "b2GetTicks",
+      "description": "",
+      "returnType": "uint64_t"
+    },
+    {
+      "name": "b2GetMilliseconds",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "uint64_t",
+          "name": "ticks"
+        }
+      ]
+    },
+    {
+      "name": "b2GetMillisecondsAndReset",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "uint64_t *",
+          "name": "ticks"
+        }
+      ]
+    },
+    {
+      "name": "b2Yield",
+      "description": "",
+      "returnType": "void"
+    },
+    {
+      "name": "b2Hash",
+      "description": "",
+      "returnType": "uint32_t",
+      "params": [
+        {
+          "type": "uint32_t",
+          "name": "hash"
+        },
+        {
+          "type": "const uint8_t*",
+          "name": "data"
+        },
+        {
+          "type": "int",
+          "name": "count"
+        }
+      ]
+    }
+  ]
+}
