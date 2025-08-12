@@ -3,7 +3,7 @@
 import json
 import re
 import os
-
+import copy
 import os
 
 CRATE_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
@@ -20,6 +20,17 @@ NEED_INDEF_ARRAY = [
     "ContactHitEvent",
     "BodyMoveEvent",
     "JointEvent",
+]
+
+JOINT_TYPES = [
+    "DistanceJoint",
+    "MotorJoint",
+    "RevoluteJoint",
+    "PrismaticJoint",
+    "MouseJoint",
+    "FilterJoint",
+    "WeldJoint",
+    "WheelJoint",
 ]
 
 TYPE_CONVERSION = {
@@ -56,6 +67,7 @@ TYPE_CONVERSION = {
     "uint8_t[3]": "Chars_Array_3",
     "ManifoldPoint[2]": "ManifoldPoint_Array_2",
     "int[24]": "Int_Array_24",
+    "int[12]": "Int_Array_12",
 }
 
 TYPE_IDENTITY = []
@@ -91,7 +103,6 @@ def to_ada_type(c_type, name=None, parent=None):
     elif c_type.endswith(" *") and c_type[:-2] in NEED_INDEF_ARRAY:
         return f"access {to_ada_type(c_type[:-1].strip(), name, parent)}_Array_Indef"
     elif c_type.endswith("*"):
-        print(str(c_type) + " " + str(name) + " " + str(parent))
         return "access " + to_ada_type(c_type[:-1].strip(), name, parent)
     elif c_type.endswith("[B2_MAX_POLYGON_VERTICES]"):
         return c_type[:-25].strip() + "_Array_Max_Poly"
@@ -112,6 +123,7 @@ def is_type_name(name):
 
 def gen_struct(struct):
 
+    print(str(struct))
     struct["name"] = b2strip(struct["name"])
 
     out = f"   type {struct['name']} is record\n"
@@ -139,6 +151,15 @@ def gen_struct(struct):
         out += f"   type {struct["name"]}_Array_Indef is array (Interfaces.C.unsigned) of aliased {struct["name"]}\n"
         out += "     with Convention => C;\n\n"
 
+    if struct["name"] == "JointId":
+        for joint_type in JOINT_TYPES:
+            jtype = f"{joint_type}Id"
+            out += f"   type {jtype} is new JointId;\n"
+            out += f"   function AsJoint (J : {jtype}) return JointId\n"
+            out += "   is (JointId(J));\n\n"
+            TYPE_IDENTITY.append(jtype)
+        print("\n")
+
     TYPE_IDENTITY.append(struct["name"])
 
     return out
@@ -159,8 +180,9 @@ def gen_enum(enum):
     out = ""
     enum["name"] = b2strip(enum["name"])
 
+    # Remove B2_ prefix and change first letter case of value name
     for value in enum["values"]:
-        value["name"] = b2strip(value["name"])
+        value["name"] = value["name"][3].upper() + value["name"][4:]
 
     kind = enum_kind(enum["name"])
 
@@ -226,7 +248,7 @@ def gen_enum(enum):
     return out
 
 
-def function_decl(function, spec=True, callback=False):
+def function_decl(function, spec=True, callback=False, import_fun=False):
     out = ""
     param_decls = []
     if function["params"] is not None:
@@ -247,8 +269,8 @@ def function_decl(function, spec=True, callback=False):
     else:
         name = function["name"]
 
-    if name.startswith("DistanceJoint_"):
-        aspects = "\n     with Pre => Joint_GetType (jointId_p) = B2_distanceJoint"
+    if import_fun:
+        aspects = f'\n     with Import => True, Convention => C, External_Name => "{function["name"]}"'
     else:
         aspects = ""
 
@@ -256,9 +278,12 @@ def function_decl(function, spec=True, callback=False):
     if function["returnType"] is None:
         out += f"   procedure {name}{params_str}{aspects}{term}\n"
     else:
-        out += f"   function {name}{params_str} return {function['returnType']}{term}\n"
-    if spec and not callback:
+        out += f"   function {name}{params_str} return {function['returnType']}{aspects}{term}\n"
+
+    if spec and not callback and function["description"] != "":
         out += f"   --  {function['description']}\n"
+    else:
+        out += "\n"
     return out
 
 
@@ -268,7 +293,6 @@ def gen_string_function_body(function):
     out += "      use Interfaces.C.Strings;\n"
     params = function["params"] if function["params"] is not None else []
     ret_type = function["returnType"]
-    ret_str = ret_type == "String"
 
     call_params = []
     for p in params:
@@ -345,7 +369,7 @@ def gen_function(function):
     else:
         name = function["name"]
 
-    spec += function_decl(function)
+    spec += function_decl(function, import_fun=True)
 
     # It's ok to not keep the id of a shape, so create a procedure variant of
     # the create shape functions so users don't have to use the result of the
@@ -353,9 +377,7 @@ def gen_function(function):
     if function["returnType"] == "ShapeId":
         proc = function
         proc["returnType"] = None
-        spec += function_decl(proc)
-
-    spec += f"   pragma Import (C, {name}, \"{function['name']}\");\n\n"
+        spec += function_decl(proc, import_fun=True)
 
     if has_string:
         # This sub-program either returns a string or takes a string argument.
@@ -372,16 +394,23 @@ def gen_function(function):
         spec += function_decl(function) + "\n"
         body += gen_string_function_body(function)
 
+    if (
+        function["name"] == "b2Joint_GetType"
+        and function["params"][0]["type"] == "JointId"
+    ):
+        for jtype in JOINT_TYPES:
+
+            spec += f"   function IsValid(Id : {jtype}Id) return Boolean\n"
+            spec += f"   is (IsValid (AsJoint (Id)) = True and then GetType(AsJoint (Id)) = {jtype});\n"
+            spec += "    --  Check the the joint is valid and has the correct underlying type\n\n"
+        spec += "\n"
+
     return (spec, body)
 
 
 def gen_define(define):
     out = ""
-    if define["type"] == "COLOR":
-        r = re.compile("CLITERAL\(Color\)\{ ([0-9]+), ([0-9]+), ([0-9]+), ([0-9]+) \}")
-        r, g, b, a = r.match(define["value"]).groups()
-        out += f"   {define['name']} : constant Color := ({r}, {g}, {b}, {a});\n"
-    elif define["type"] == "STRING":
+    if define["type"] == "STRING":
         out += f"   {define['name']} : constant String := \"{define['value']}\";\n"
     elif define["type"] == "INT" or define["type"] == "FLOAT":
         out += f"   {define['name']} : constant := {define['value']};\n"
@@ -409,7 +438,7 @@ def gen_callback(callback):
     return out
 
 
-def gen_binding(json_files, package_name, package_file, function_prefix):
+def gen_binding(json_files, package_name, package_file):
 
     SKIP_CALLBACKS = []
     SKIP_STRUCTS = []
@@ -429,6 +458,7 @@ def gen_binding(json_files, package_name, package_file, function_prefix):
     spec += "   use type Interfaces.C.C_float;\n"
     spec += "   type Chars_Array_3 is array (0 .. 2) of Interfaces.C.char;\n"
     spec += "   type Int_Array_24 is array (0 .. 23) of Interfaces.C.int;\n"
+    spec += "   type Int_Array_12 is array (0 .. 11) of Interfaces.C.int;\n"
 
     body += f"package body {package_name} is\n"
     body += '   pragma Linker_Options ("-lbox2d");\n'
@@ -455,18 +485,77 @@ def gen_binding(json_files, package_name, package_file, function_prefix):
             if struct["name"] not in SKIP_STRUCTS:
                 spec += gen_struct(struct)
 
-        if function_prefix != "":
-            extended_funcs = []
-            for function in data["functions"]:
-                extended_funcs.append(function)
-                if function["name"].startswith(function_prefix):
-                    short_version = function
-                    ada_name = short_version["name"].removeprefix(function_prefix)
-                    short_version["ada-name"] = ada_name
-                    extended_funcs.append(short_version)
-            data["function"] = extended_funcs
-
+        extended_funcs = []
         for function in data["functions"]:
+            short_version = copy.deepcopy(function)
+            ada_name = None
+            for prefix in [
+                "b2World_",
+                "b2Body_",
+                "b2Shape_",
+                "b2Chain_",
+                "b2Joint_",
+                "b2DynamicTree_",
+                "b2",
+            ]:
+                if function["name"].startswith(prefix):
+                    ada_name = short_version["name"].removeprefix(prefix)
+                    break
+
+            if ada_name is None:
+                ada_name = function["name"]
+            short_version["ada-name"] = ada_name
+            extended_funcs.append(short_version)
+
+            if (
+                "params" in function
+                and len(function["params"]) > 0
+                and function["params"][0]["name"] == "jointId"
+                and function["params"][0]["type"] == "b2JointId"
+            ):
+                # Create duplicates of common joint function for all joint
+                # types with a proper joint type "alias"
+
+                short_version["params"][0]["name"] = "Id"
+
+                if function["name"].startswith("b2Joint_"):
+                    for jtype in JOINT_TYPES:
+                        extra_joint = copy.deepcopy(short_version)
+                        extra_joint["params"][0]["type"] = jtype + "Id"
+                        extra_joint["params"][0]["name"] = "Id"
+                        extended_funcs.append(extra_joint)
+                elif function["name"] == "b2DestroyJoint":
+                    # Create destroy for all joint types
+                    for jtype in JOINT_TYPES:
+                        extra_joint = copy.deepcopy(short_version)
+                        extra_joint["params"][0]["type"] = f"{jtype}Id"
+                        extra_joint["params"][0]["name"] = "Id"
+                        extended_funcs.append(extra_joint)
+                else:
+                    for jtype in JOINT_TYPES:
+                        # Convert specific joint function to use the proper joint type "alias"
+                        if function["name"].startswith(f"b2{jtype}_"):
+                            # Edit in place
+
+                            # 1st param type
+                            short_version["params"][0]["type"] = f"{jtype}Id"
+                            short_version["params"][0]["name"] = "Id"
+
+                            # Remove prefix
+                            short_version["ada-name"] = short_version["ada-name"][
+                                len(jtype) + 1 :
+                            ]
+
+            elif function["name"].startswith("b2Create") and function["name"].endswith(
+                "Joint"
+            ):
+                # Change the return type of joint constructors to use proper joint type "alias"
+                jtype = function["name"][8:-5]
+                short_version["returnType"] = (
+                    f"{jtype}JointId"  # Edit the dict already in the extended_funcs
+                )
+
+        for function in extended_funcs:
             if function["name"] not in SKIP_FUNCTIONS:
                 f_spec, f_body = gen_function(function)
                 spec += f_spec
@@ -702,11 +791,6 @@ def gen_binding(json_files, package_name, package_file, function_prefix):
             f.write(body)
 
 
-# gen_binding("id.h.json", "Box2D.Id", "box2d-id", "")
-# gen_binding("math_functions.h.json", "Box2D.Math_Functions", "box2d-Math_Functions", "")
-# gen_binding("collision.h.json", "Box2D.Collision", "box2d-collision", "")
-# gen_binding("types.h.json", "Box2D.Types", "box2d-types", "")
-
 gen_binding(
     [
         "base.h.json",
@@ -718,5 +802,4 @@ gen_binding(
     ],
     "Box2D",
     "box2d",
-    "b2",
 )

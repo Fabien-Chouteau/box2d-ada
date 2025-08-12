@@ -162,17 +162,6 @@
       ]
     },
     {
-      "name": "b2IsValidTransform",
-      "description": "",
-      "returnType": "bool",
-      "params": [
-        {
-          "type": "b2Transform",
-          "name": "t"
-        }
-      ]
-    },
-    {
       "name": "b2IsValidAABB",
       "description": "",
       "returnType": "bool",

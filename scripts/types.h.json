@@ -86,7 +86,7 @@
         },
         {
           "type": "float",
-          "name": "contactSpeed",
+          "name": "maxContactPushSpeed",
           "description": ""
         },
         {
@@ -142,27 +142,6 @@
         {
           "type": "int",
           "name": "internalValue",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "b2MotionLocks",
-      "description": "/ Motion locks to restrict the body movement",
-      "fields": [
-        {
-          "type": "bool",
-          "name": "linearX",
-          "description": ""
-        },
-        {
-          "type": "bool",
-          "name": "linearY",
-          "description": ""
-        },
-        {
-          "type": "bool",
-          "name": "angularZ",
           "description": ""
         }
       ]
@@ -227,11 +206,6 @@
           "description": ""
         },
         {
-          "type": "b2MotionLocks",
-          "name": "motionLocks",
-          "description": ""
-        },
-        {
           "type": "bool",
           "name": "enableSleep",
           "description": ""
@@ -239,6 +213,11 @@
         {
           "type": "bool",
           "name": "isAwake",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "fixedRotation",
           "description": ""
         },
         {
@@ -362,11 +341,6 @@
         },
         {
           "type": "bool",
-          "name": "enableCustomFiltering",
-          "description": ""
-        },
-        {
-          "type": "bool",
           "name": "isSensor",
           "description": ""
         },
@@ -484,6 +458,11 @@
         },
         {
           "type": "float",
+          "name": "mergeIslands",
+          "description": ""
+        },
+        {
+          "type": "float",
           "name": "prepareStages",
           "description": ""
         },
@@ -540,16 +519,6 @@
         {
           "type": "float",
           "name": "transforms",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "sensorHits",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "jointEvents",
           "description": ""
         },
         {
@@ -634,21 +603,16 @@
           "description": ""
         },
         {
-          "type": "int[24]",
+          "type": "int[12]",
           "name": "colorCounts",
           "description": ""
         }
       ]
     },
     {
-      "name": "b2JointDef",
-      "description": "/ 2. if you add/remove shapes from a body and recompute the mass, the joints will be broken",
+      "name": "b2DistanceJointDef",
+      "description": "/ @ingroup distance_joint",
       "fields": [
-        {
-          "type": "void *",
-          "name": "userData",
-          "description": ""
-        },
         {
           "type": "b2BodyId",
           "name": "bodyIdA",
@@ -660,54 +624,13 @@
           "description": ""
         },
         {
-          "type": "b2Transform",
-          "name": "localFrameA",
+          "type": "b2Vec2",
+          "name": "localAnchorA",
           "description": ""
         },
         {
-          "type": "b2Transform",
-          "name": "localFrameB",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "forceThreshold",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "torqueThreshold",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "constraintHertz",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "constraintDampingRatio",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "drawScale",
-          "description": ""
-        },
-        {
-          "type": "bool",
-          "name": "collideConnected",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "b2DistanceJointDef",
-      "description": "/ @ingroup distance_joint",
-      "fields": [
-        {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2Vec2",
+          "name": "localAnchorB",
           "description": ""
         },
         {
@@ -718,16 +641,6 @@
         {
           "type": "bool",
           "name": "enableSpring",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "lowerSpringForce",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "upperSpringForce",
           "description": ""
         },
         {
@@ -771,6 +684,16 @@
           "description": ""
         },
         {
+          "type": "bool",
+          "name": "collideConnected",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
           "type": "int",
           "name": "internalValue",
           "description": ""
@@ -782,63 +705,48 @@
       "description": "/ @ingroup motor_joint",
       "fields": [
         {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
           "description": ""
         },
         {
           "type": "b2Vec2",
-          "name": "linearVelocity",
+          "name": "linearOffset",
           "description": ""
         },
         {
           "type": "float",
-          "name": "maxVelocityForce",
+          "name": "angularOffset",
           "description": ""
         },
         {
           "type": "float",
-          "name": "angularVelocity",
+          "name": "maxForce",
           "description": ""
         },
         {
           "type": "float",
-          "name": "maxVelocityTorque",
+          "name": "maxTorque",
           "description": ""
         },
         {
           "type": "float",
-          "name": "linearHertz",
+          "name": "correctionFactor",
           "description": ""
         },
         {
-          "type": "float",
-          "name": "linearDampingRatio",
+          "type": "bool",
+          "name": "collideConnected",
           "description": ""
         },
         {
-          "type": "float",
-          "name": "maxSpringForce",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "angularHertz",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "angularDampingRatio",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "maxSpringTorque",
-          "description": ""
-        },
-        {
-          "type": "b2Transform",
-          "name": "relativeTransform",
+          "type": "void *",
+          "name": "userData",
           "description": ""
         },
         {
@@ -853,8 +761,18 @@
       "description": "/ @ingroup mouse_joint",
       "fields": [
         {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "target",
           "description": ""
         },
         {
@@ -873,6 +791,16 @@
           "description": ""
         },
         {
+          "type": "bool",
+          "name": "collideConnected",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
           "type": "int",
           "name": "internalValue",
           "description": ""
@@ -884,8 +812,18 @@
       "description": "/ @ingroup filter_joint",
       "fields": [
         {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
           "description": ""
         },
         {
@@ -900,8 +838,38 @@
       "description": "/ @ingroup prismatic_joint",
       "fields": [
         {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorA",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAxisA",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "referenceAngle",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "targetTranslation",
           "description": ""
         },
         {
@@ -917,11 +885,6 @@
         {
           "type": "float",
           "name": "dampingRatio",
-          "description": ""
-        },
-        {
-          "type": "float",
-          "name": "targetTranslation",
           "description": ""
         },
         {
@@ -955,6 +918,16 @@
           "description": ""
         },
         {
+          "type": "bool",
+          "name": "collideConnected",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
           "type": "int",
           "name": "internalValue",
           "description": ""
@@ -966,8 +939,28 @@
       "description": "/ @ingroup revolute_joint",
       "fields": [
         {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorA",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorB",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "referenceAngle",
           "description": ""
         },
         {
@@ -1021,6 +1014,21 @@
           "description": ""
         },
         {
+          "type": "float",
+          "name": "drawSize",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "collideConnected",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
           "type": "int",
           "name": "internalValue",
           "description": ""
@@ -1032,8 +1040,28 @@
       "description": "/ @ingroup weld_joint",
       "fields": [
         {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorA",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorB",
+          "description": ""
+        },
+        {
+          "type": "float",
+          "name": "referenceAngle",
           "description": ""
         },
         {
@@ -1057,6 +1085,16 @@
           "description": ""
         },
         {
+          "type": "bool",
+          "name": "collideConnected",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
+          "description": ""
+        },
+        {
           "type": "int",
           "name": "internalValue",
           "description": ""
@@ -1068,8 +1106,28 @@
       "description": "/ @ingroup wheel_joint",
       "fields": [
         {
-          "type": "b2JointDef",
-          "name": "base",
+          "type": "b2BodyId",
+          "name": "bodyIdA",
+          "description": ""
+        },
+        {
+          "type": "b2BodyId",
+          "name": "bodyIdB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorA",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAnchorB",
+          "description": ""
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAxisA",
           "description": ""
         },
         {
@@ -1115,6 +1173,16 @@
         {
           "type": "float",
           "name": "motorSpeed",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "collideConnected",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
           "description": ""
         },
         {
@@ -1192,12 +1260,12 @@
       "description": "/ Note: these may become invalid if bodies and/or shapes are destroyed",
       "fields": [
         {
-          "type": "b2SensorBeginTouchEvent*",
+          "type": "b2SensorBeginTouchEvent *",
           "name": "beginEvents",
           "description": ""
         },
         {
-          "type": "b2SensorEndTouchEvent*",
+          "type": "b2SensorEndTouchEvent *",
           "name": "endEvents",
           "description": ""
         },
@@ -1228,8 +1296,8 @@
           "description": ""
         },
         {
-          "type": "b2ContactId",
-          "name": "contactId",
+          "type": "b2Manifold",
+          "name": "manifold",
           "description": ""
         }
       ]
@@ -1246,11 +1314,6 @@
         {
           "type": "b2ShapeId",
           "name": "shapeIdB",
-          "description": ""
-        },
-        {
-          "type": "b2ContactId",
-          "name": "contactId",
           "description": ""
         }
       ]
@@ -1327,11 +1390,6 @@
       "description": "/ @note If sleeping is disabled all dynamic and kinematic bodies will trigger move events.",
       "fields": [
         {
-          "type": "void *",
-          "name": "userData",
-          "description": ""
-        },
-        {
           "type": "b2Transform",
           "name": "transform",
           "description": ""
@@ -1339,6 +1397,11 @@
         {
           "type": "b2BodyId",
           "name": "bodyId",
+          "description": ""
+        },
+        {
+          "type": "void *",
+          "name": "userData",
           "description": ""
         },
         {
@@ -1365,46 +1428,9 @@
       ]
     },
     {
-      "name": "b2JointEvent",
-      "description": "/ The observed forces and torques are not returned for efficiency reasons.",
-      "fields": [
-        {
-          "type": "b2JointId",
-          "name": "jointId",
-          "description": ""
-        },
-        {
-          "type": "void *",
-          "name": "userData",
-          "description": ""
-        }
-      ]
-    },
-    {
-      "name": "b2JointEvents",
-      "description": "/ Note: this data becomes invalid if joints are destroyed",
-      "fields": [
-        {
-          "type": "b2JointEvent *",
-          "name": "jointEvents",
-          "description": ""
-        },
-        {
-          "type": "int",
-          "name": "count",
-          "description": ""
-        }
-      ]
-    },
-    {
       "name": "b2ContactData",
       "description": "/ @see b2Shape_GetContactData() and b2Body_GetContactData()",
       "fields": [
-        {
-          "type": "b2ContactId",
-          "name": "contactId",
-          "description": ""
-        },
         {
           "type": "b2ShapeId",
           "name": "shapeIdA",
@@ -1474,6 +1500,11 @@
         {
           "type": "b2AABB",
           "name": "drawingBounds",
+          "description": ""
+        },
+        {
+          "type": "bool",
+          "name": "useDrawingBounds",
           "description": ""
         },
         {
@@ -2527,12 +2558,8 @@
           "name": "shapeIdB"
         },
         {
-          "type": "b2Vec2",
-          "name": "point"
-        },
-        {
-          "type": "b2Vec2",
-          "name": "normal"
+          "type": "b2Manifold *",
+          "name": "manifold"
         },
         {
           "type": "void *",

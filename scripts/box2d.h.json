@@ -111,17 +111,6 @@
       ]
     },
     {
-      "name": "b2World_GetJointEvents",
-      "description": "",
-      "returnType": "b2JointEvents",
-      "params": [
-        {
-          "type": "b2WorldId",
-          "name": "worldId"
-        }
-      ]
-    },
-    {
       "name": "b2World_OverlapAABB",
       "description": "",
       "returnType": "b2TreeStats",
@@ -1383,7 +1372,7 @@
       ]
     },
     {
-      "name": "b2Body_SetMotionLocks",
+      "name": "b2Body_SetFixedRotation",
       "description": "",
       "returnType": "void",
       "params": [
@@ -1392,15 +1381,15 @@
           "name": "bodyId"
         },
         {
-          "type": "b2MotionLocks",
-          "name": "locks"
+          "type": "bool",
+          "name": "flag"
         }
       ]
     },
     {
-      "name": "b2Body_GetMotionLocks",
+      "name": "b2Body_IsFixedRotation",
       "description": "",
-      "returnType": "b2MotionLocks",
+      "returnType": "bool",
       "params": [
         {
           "type": "b2BodyId",
@@ -2210,7 +2199,7 @@
       ]
     },
     {
-      "name": "b2Shape_GetSensorData",
+      "name": "b2Shape_GetSensorOverlaps",
       "description": "",
       "returnType": "int",
       "params": [
@@ -2220,7 +2209,7 @@
         },
         {
           "type": "b2ShapeId *",
-          "name": "visitorIds"
+          "name": "overlaps"
         },
         {
           "type": "int",
@@ -2240,7 +2229,7 @@
       ]
     },
     {
-      "name": "b2Shape_ComputeMassData",
+      "name": "b2Shape_GetMassData",
       "description": "",
       "returnType": "b2MassData",
       "params": [
@@ -2488,7 +2477,7 @@
       ]
     },
     {
-      "name": "b2Joint_SetLocalFrameA",
+      "name": "b2Joint_SetLocalAnchorA",
       "description": "",
       "returnType": "void",
       "params": [
@@ -2497,15 +2486,15 @@
           "name": "jointId"
         },
         {
-          "type": "b2Transform",
-          "name": "localFrame"
+          "type": "b2Vec2",
+          "name": "localAnchor"
         }
       ]
     },
     {
-      "name": "b2Joint_GetLocalFrameA",
+      "name": "b2Joint_GetLocalAnchorA",
       "description": "",
-      "returnType": "b2Transform",
+      "returnType": "b2Vec2",
       "params": [
         {
           "type": "b2JointId",
@@ -2514,7 +2503,7 @@
       ]
     },
     {
-      "name": "b2Joint_SetLocalFrameB",
+      "name": "b2Joint_SetLocalAnchorB",
       "description": "",
       "returnType": "void",
       "params": [
@@ -2523,15 +2512,67 @@
           "name": "jointId"
         },
         {
-          "type": "b2Transform",
-          "name": "localFrame"
+          "type": "b2Vec2",
+          "name": "localAnchor"
         }
       ]
     },
     {
-      "name": "b2Joint_GetLocalFrameB",
+      "name": "b2Joint_GetLocalAnchorB",
       "description": "",
-      "returnType": "b2Transform",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetReferenceAngle",
+      "description": "",
+      "returnType": "float",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetReferenceAngle",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "float",
+          "name": "angleInRadians"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_SetLocalAxisA",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "localAxis"
+        }
+      ]
+    },
+    {
+      "name": "b2Joint_GetLocalAxisA",
+      "description": "",
+      "returnType": "b2Vec2",
       "params": [
         {
           "type": "b2JointId",
@@ -2647,25 +2688,6 @@
       ]
     },
     {
-      "name": "b2Joint_SetConstraintTuning",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float",
-          "name": "hertz"
-        },
-        {
-          "type": "float",
-          "name": "dampingRatio"
-        }
-      ]
-    },
-    {
       "name": "b2Joint_GetConstraintTuning",
       "description": "",
       "returnType": "void",
@@ -2685,7 +2707,7 @@
       ]
     },
     {
-      "name": "b2Joint_SetForceThreshold",
+      "name": "b2Joint_SetConstraintTuning",
       "description": "",
       "returnType": "void",
       "params": [
@@ -2695,44 +2717,11 @@
         },
         {
           "type": "float",
-          "name": "threshold"
-        }
-      ]
-    },
-    {
-      "name": "b2Joint_GetForceThreshold",
-      "description": "",
-      "returnType": "float",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2Joint_SetTorqueThreshold",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
+          "name": "hertz"
         },
         {
           "type": "float",
-          "name": "threshold"
-        }
-      ]
-    },
-    {
-      "name": "b2Joint_GetTorqueThreshold",
-      "description": "",
-      "returnType": "float",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
+          "name": "dampingRatio"
         }
       ]
     },
@@ -2794,55 +2783,6 @@
     },
     {
       "name": "b2DistanceJoint_IsSpringEnabled",
-      "description": "",
-      "returnType": "bool",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2DistanceJoint_SetSpringForceRange",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float",
-          "name": "lowerForce"
-        },
-        {
-          "type": "float",
-          "name": "upperForce"
-        }
-      ]
-    },
-    {
-      "name": "b2DistanceJoint_GetSpringForceRange",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float *",
-          "name": "lowerForce"
-        },
-        {
-          "type": "float *",
-          "name": "upperForce"
-        }
-      ]
-    },
-    {
-      "name": "b2DistanceJoint_IsCompressionEnabled",
       "description": "",
       "returnType": "bool",
       "params": [
@@ -3087,7 +3027,7 @@
       ]
     },
     {
-      "name": "b2MotorJoint_SetLinearVelocity",
+      "name": "b2MotorJoint_SetLinearOffset",
       "description": "",
       "returnType": "void",
       "params": [
@@ -3097,12 +3037,12 @@
         },
         {
           "type": "b2Vec2",
-          "name": "velocity"
+          "name": "linearOffset"
         }
       ]
     },
     {
-      "name": "b2MotorJoint_GetLinearVelocity",
+      "name": "b2MotorJoint_GetLinearOffset",
       "description": "",
       "returnType": "b2Vec2",
       "params": [
@@ -3113,7 +3053,7 @@
       ]
     },
     {
-      "name": "b2MotorJoint_SetAngularVelocity",
+      "name": "b2MotorJoint_SetAngularOffset",
       "description": "",
       "returnType": "void",
       "params": [
@@ -3123,12 +3063,12 @@
         },
         {
           "type": "float",
-          "name": "velocity"
+          "name": "angularOffset"
         }
       ]
     },
     {
-      "name": "b2MotorJoint_GetAngularVelocity",
+      "name": "b2MotorJoint_GetAngularOffset",
       "description": "",
       "returnType": "float",
       "params": [
@@ -3139,7 +3079,7 @@
       ]
     },
     {
-      "name": "b2MotorJoint_SetMaxVelocityForce",
+      "name": "b2MotorJoint_SetMaxForce",
       "description": "",
       "returnType": "void",
       "params": [
@@ -3154,7 +3094,7 @@
       ]
     },
     {
-      "name": "b2MotorJoint_GetMaxVelocityForce",
+      "name": "b2MotorJoint_GetMaxForce",
       "description": "",
       "returnType": "float",
       "params": [
@@ -3165,7 +3105,7 @@
       ]
     },
     {
-      "name": "b2MotorJoint_SetMaxVelocityTorque",
+      "name": "b2MotorJoint_SetMaxTorque",
       "description": "",
       "returnType": "void",
       "params": [
@@ -3180,7 +3120,7 @@
       ]
     },
     {
-      "name": "b2MotorJoint_GetMaxVelocityTorque",
+      "name": "b2MotorJoint_GetMaxTorque",
       "description": "",
       "returnType": "float",
       "params": [
@@ -3191,7 +3131,7 @@
       ]
     },
     {
-      "name": "b2MotorJoint_SetLinearHertz",
+      "name": "b2MotorJoint_SetCorrectionFactor",
       "description": "",
       "returnType": "void",
       "params": [
@@ -3201,142 +3141,12 @@
         },
         {
           "type": "float",
-          "name": "hertz"
+          "name": "correctionFactor"
         }
       ]
     },
     {
-      "name": "b2MotorJoint_GetLinearHertz",
-      "description": "",
-      "returnType": "float",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_SetLinearDampingRatio",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float",
-          "name": "damping"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_GetLinearDampingRatio",
-      "description": "",
-      "returnType": "float",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_SetAngularHertz",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float",
-          "name": "hertz"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_GetAngularHertz",
-      "description": "",
-      "returnType": "float",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_SetAngularDampingRatio",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float",
-          "name": "damping"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_GetAngularDampingRatio",
-      "description": "",
-      "returnType": "float",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_SetMaxSpringForce",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float",
-          "name": "maxForce"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_GetMaxSpringForce",
-      "description": "",
-      "returnType": "float",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_SetMaxSpringTorque",
-      "description": "",
-      "returnType": "void",
-      "params": [
-        {
-          "type": "b2JointId",
-          "name": "jointId"
-        },
-        {
-          "type": "float",
-          "name": "maxTorque"
-        }
-      ]
-    },
-    {
-      "name": "b2MotorJoint_GetMaxSpringTorque",
+      "name": "b2MotorJoint_GetCorrectionFactor",
       "description": "",
       "returnType": "float",
       "params": [
@@ -3358,6 +3168,32 @@
         {
           "type": "const b2MouseJointDef *",
           "name": "def"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_SetTarget",
+      "description": "",
+      "returnType": "void",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
+        },
+        {
+          "type": "b2Vec2",
+          "name": "target"
+        }
+      ]
+    },
+    {
+      "name": "b2MouseJoint_GetTarget",
+      "description": "",
+      "returnType": "b2Vec2",
+      "params": [
+        {
+          "type": "b2JointId",
+          "name": "jointId"
         }
       ]
     },
@@ -4402,28 +4238,6 @@
         {
           "type": "b2JointId",
           "name": "jointId"
-        }
-      ]
-    },
-    {
-      "name": "b2Contact_IsValid",
-      "description": "",
-      "returnType": "bool",
-      "params": [
-        {
-          "type": "b2ContactId",
-          "name": "id"
-        }
-      ]
-    },
-    {
-      "name": "b2Contact_GetData",
-      "description": "",
-      "returnType": "b2ContactData",
-      "params": [
-        {
-          "type": "b2ContactId",
-          "name": "contactId"
         }
       ]
     }
