@@ -25,8 +25,8 @@ jobs:
     - name: Build crate
       run: |
         set -xeuo pipefail
-        apt-get update
-        apt-get install -y lazarus
+        sudo apt-get update
+        sudo apt-get install -y libbox2d-dev
         alr --non-interactive build
         if pushd 'examples'; then
           alr --non-interactive build
