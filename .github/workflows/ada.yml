@@ -27,6 +27,10 @@ jobs:
         set -xeuo pipefail
         sudo apt-get update
         sudo apt-get install -y libbox2d-dev
+        wget https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_linux_amd64.tar.gz
+        tar xf raylib-5.0_linux_amd64.tar.gz
+        export C_INCLUDE_PATH=${PWD}/raylib-5.0_linux_amd64/include/:${C_INCLUDE_PATH}
+        export LIBRARY_PATH=${PWD}/raylib-5.0_linux_amd64/lib/:${LIBRARY_PATH}
         alr --non-interactive build
         if pushd 'examples'; then
           alr --non-interactive build
