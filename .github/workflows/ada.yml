@@ -24,7 +24,7 @@ jobs:
 
     - name: Build crate
       run: |
-        set -xeuo pipefail
+        set -xeo pipefail
         sudo apt-get update
         sudo apt-get install -y libbox2d-dev
         wget https://github.com/raysan5/raylib/releases/download/5.0/raylib-5.0_linux_amd64.tar.gz
